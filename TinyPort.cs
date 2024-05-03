@@ -7,7 +7,7 @@ using System.IO.Ports;
 
 namespace LockSmart
 {
-    internal class TinyPort:SerialPort
+    internal class TinyPort : SerialPort
     {
         private string port;
         public SerialPort objecta;
@@ -15,18 +15,19 @@ namespace LockSmart
         public TinyPort(string port)
         {
             this.port = port;
-            this.objecta = new SerialPort(port,9600);
+            this.objecta = new SerialPort(port, 9600);
+            //this.objecta.Open();
         }
         public void ModifyPort(string porta)
         {
-            SerialPort port = new SerialPort(porta,9600);
+            SerialPort port = new SerialPort(porta, 9600);
             this.objecta = port;
         }
         public void CheckIfHavetoClose(bool haveto)
         {
-            if(haveto)
+            if (haveto)
             {
-                if(this.objecta.IsOpen && this.objecta != null)
+                if (this.objecta.IsOpen && this.objecta != null)
                 {
                     this.objecta.Close();
                 }

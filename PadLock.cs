@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LockSmart
 {
@@ -22,22 +23,46 @@ namespace LockSmart
         {
             get => this.locked;
         }
-        public void UnLock(string value)
+        public void UnLock()
         {
-            if (this.locked) { }
+            if (!this.locked) 
+            {
+                MessageBox.Show("Il lucchetto è gia sbloccato");
+            }
             else
             {
-                if(value == this.code)
+                string value = "";
+                InputBox user = new InputBox();
+                if (user.ShowDialog() == DialogResult.OK)
                 {
-                    this.locked = false;
-                    this.motore.objecta.Write("true");
+                    value = user.InText;
+                    if (value == this.code)
+                    {
+                        this.locked = false;
+                        this.motore.objecta.Write("false");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chiave Errata");
+                    }
                 }
             }
         }
         public void Lock()
         {
-            this.locked = true;
-            this.motore.objecta.Write("true");
+            if(this.locked)
+            {
+                MessageBox.Show("Il lucchetto è gia bloccato");
+            }
+            else
+            {
+                try
+                {
+                    this.motore.objecta.Write("true");
+                    this.locked = true;
+                }
+                catch { MessageBox.Show("Impossibile bloccare il lucchetto"); }
+            }
         }
     }
 }
