@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Text;
 
 namespace LockSmart
 {
@@ -42,7 +43,9 @@ namespace LockSmart
             this.Text = "LockSmart";
             this.ResumeLayout(false);
             this.ForeColor = Color.FromArgb(255, 236, 158);
-
+            PrivateFontCollection Fonta  = new PrivateFontCollection();
+            Fonta.AddFontFile("Quicksand-VariableFont_wght.ttf");
+            this.Font = new Font(Fonta.Families[0], 20);
         }
 
         #endregion

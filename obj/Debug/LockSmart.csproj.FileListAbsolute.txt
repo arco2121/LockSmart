@@ -1,0 +1,11 @@
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\LockSmart.exe.config
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\LockSmart.exe
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\LockSmart.pdb
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.AssemblyReference.cache
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.SuggestedBindingRedirects.cache
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.Form1.resources
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.Properties.Resources.resources
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.GenerateResource.cache
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.CoreCompileInputs.cache
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.exe
+C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.pdb
