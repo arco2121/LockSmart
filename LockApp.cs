@@ -20,7 +20,7 @@ namespace LockSmart
 
         private void LockApp_Load(object sender, EventArgs e)
         {
-            try { Lucchetto = new PadLock(true, /*prima chederemo la chiave*/"HH", "COM7"); }
+            try { Lucchetto = new PadLock(true, /*prima chederemo la chiave*/"", "COM7"); }
             catch { 
                 MessageBox.Show("Errore nel comunicare con il lucchetto."); 
                 Application.Exit();
