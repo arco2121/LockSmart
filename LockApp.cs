@@ -58,7 +58,7 @@ namespace LockSmart
         private string AskPassword(bool nuovo)
         {
             string h;
-            try { h = File.ReadAllText("Code.code"); }
+            try { h = File.ReadAllText("Memory.LockSmart"); }
             catch { h = ""; }
 
             if(h != "")
@@ -73,7 +73,7 @@ namespace LockSmart
                         { 
                             Lucchetto.motore.WriteToPort("/changecode->" + newcode, false);
                             Lucchetto.code = newcode;
-                            File.WriteAllText("Code.code", newcode);
+                            File.WriteAllText("Memory.LockSmart", newcode);
                         }
                         catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                         return newcode;
@@ -92,7 +92,7 @@ namespace LockSmart
                 if (box.ShowDialog() == DialogResult.OK)
                 {
                     string newcode = box.InText;
-                    File.WriteAllText("Code.code", newcode);
+                    File.WriteAllText("Memory.LockSmart", newcode);
                     return newcode;
                 }
                 else
