@@ -4,38 +4,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
+using System.Windows.Forms;
 
 namespace LockSmart
 {
     internal class TinyPort : SerialPort
     {
-        private string port;
         public SerialPort objecta;
 
         public TinyPort(string port)
         {
-            this.port = port;
             this.objecta = new SerialPort(port, 9600);
             //this.objecta.Open();
         }
         public void ModifyPort(string porta)
         {
-            SerialPort port = new SerialPort(porta, 9600);
-            this.objecta = port;
+            this.objecta.PortName = porta;
         }
         public void CheckIfHavetoClose(bool haveto)
         {
             if (haveto)
             {
-                if (this.objecta.IsOpen && this.objecta != null)
+                if (this.objecta != null && this.objecta.IsOpen)
                 {
                     this.objecta.Close();
                 }
             }
         }
+
+        public void WriteToPort(string message, bool havetoclose)
+        {
+            this.objecta.WriteLine(message);
+            this.CheckIfHavetoClose(havetoclose);
+        }
+
+        public string ReadFromPort(bool havetoclose)
+        {
+            if(this.objecta.IsOpen)
+            {
+                string res = this.objecta.ReadLine();
+                this.CheckIfHavetoClose(havetoclose);
+                return res;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public string Port
         {
-            get => this.port;
+            get => this.objecta.PortName;
         }
     }
 }

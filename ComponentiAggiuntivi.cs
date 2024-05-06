@@ -13,12 +13,12 @@ namespace LockSmart
         private TextBox InBox;
         private Button OK;
         
-        public InputBox()
+        public InputBox(string title)
         {
             InBox = new TextBox();
             OK = new Button();
             OK.Click += OK_Click;
-            this.Text = "Inserisci Chiave";
+            this.Text = title;
             this.Controls.Add(InBox);
             this.Controls.Add(OK);
             InBox.Size = new Size(150, 60);

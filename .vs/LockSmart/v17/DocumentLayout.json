@@ -3,23 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|c:\\users\\colom\\onedrive\\desktop\\progetti c#\\locksmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|c:\\users\\colom\\onedrive\\desktop\\progetti c#\\locksmart\\componentiaggiuntivi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:componentiaggiuntivi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|c:\\users\\colom\\onedrive\\desktop\\progetti c#\\locksmart\\lockapp.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:lockapp.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\padlock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:padlock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|c:\\users\\colom\\onedrive\\desktop\\progetti c#\\locksmart\\lockapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\lockapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:lockapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -27,7 +11,23 @@
       "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:lockapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|c:\\users\\colom\\onedrive\\desktop\\progetti c#\\locksmart\\tinyport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\padlock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:padlock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\componentiaggiuntivi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:componentiaggiuntivi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\lockapp.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:lockapp.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\tinyport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA0C13BA-4F6E-446C-A932-FF1D3A676B72}|LockSmart.csproj|solutionrelative:tinyport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -38,8 +38,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 6,
@@ -48,27 +52,27 @@
               "RelativeDocumentMoniker": "TinyPort.cs",
               "ToolTip": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\TinyPort.cs",
               "RelativeToolTip": "TinyPort.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAYwBIAAAAOAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAgwCQAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T17:16:46.34Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ComponentiAggiuntivi.cs",
               "DocumentMoniker": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\ComponentiAggiuntivi.cs",
               "RelativeDocumentMoniker": "ComponentiAggiuntivi.cs",
               "ToolTip": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\ComponentiAggiuntivi.cs",
               "RelativeToolTip": "ComponentiAggiuntivi.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAACIAAAAxAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAUwA8AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T17:56:43.442Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -81,20 +85,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "LockApp.cs",
               "DocumentMoniker": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\LockApp.cs",
               "RelativeDocumentMoniker": "LockApp.cs",
               "ToolTip": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\LockApp.cs",
               "RelativeToolTip": "LockApp.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAqwCQAAAAfAAAA",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAswDkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T14:57:57.998Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "LockApp.cs [Progettazione]",
               "DocumentMoniker": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\LockApp.cs",
               "RelativeDocumentMoniker": "LockApp.cs",
@@ -106,26 +110,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "LockApp.Designer.cs",
               "DocumentMoniker": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\LockApp.Designer.cs",
               "RelativeDocumentMoniker": "LockApp.Designer.cs",
               "ToolTip": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\LockApp.Designer.cs",
               "RelativeToolTip": "LockApp.Designer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFgAAAAMAAAA",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAqwF4AAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T14:30:46.012Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "PadLock.cs",
               "DocumentMoniker": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\PadLock.cs",
               "RelativeDocumentMoniker": "PadLock.cs",
               "ToolTip": "C:\\Users\\colom\\OneDrive\\Desktop\\Progetti C#\\LockSmart\\PadLock.cs",
               "RelativeToolTip": "PadLock.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAwC4AAAAVAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwG8AAACUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T14:16:29.34Z",
               "EditorCaption": ""
