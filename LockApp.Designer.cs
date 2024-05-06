@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using LockSmart.Properties;
+using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 
 namespace LockSmart
 {
@@ -9,7 +11,8 @@ namespace LockSmart
         /// Variabile di progettazione necessaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        static PersonalFont font = new PersonalFont();
+        PrivateFontCollection QuickSand = font.QuickSand;
         /// <summary>
         /// Pulire le risorse in uso.
         /// </summary>
@@ -43,12 +46,12 @@ namespace LockSmart
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Consolas", 40F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font(QuickSand.Families[0], 40F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
             this.label1.Location = new System.Drawing.Point(322, 151);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10);
-            this.label1.Size = new System.Drawing.Size(424, 99);
+            this.label1.Size = new System.Drawing.Size(401, 96);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lock Smart";
             // 
@@ -88,21 +91,22 @@ namespace LockSmart
             this.RaccoltaPorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RaccoltaPorte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
             this.RaccoltaPorte.FormattingEnabled = true;
+            this.RaccoltaPorte.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
             this.RaccoltaPorte.Location = new System.Drawing.Point(872, 33);
             this.RaccoltaPorte.Margin = new System.Windows.Forms.Padding(0);
             this.RaccoltaPorte.Name = "RaccoltaPorte";
-            this.RaccoltaPorte.Size = new System.Drawing.Size(151, 46);
+            this.RaccoltaPorte.Size = new System.Drawing.Size(151, 24);
             this.RaccoltaPorte.TabIndex = 3;
             this.RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
-            this.label2.Location = new System.Drawing.Point(610, 38);
+            this.label2.Location = new System.Drawing.Point(662, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(239, 36);
+            this.label2.Size = new System.Drawing.Size(192, 31);
             this.label2.TabIndex = 4;
             this.label2.Text = "Porta Seriale:";
             // 
@@ -133,7 +137,6 @@ namespace LockSmart
             this.Controls.Add(this.UnLock);
             this.Controls.Add(this.Lock);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Consolas", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.MaximizeBox = false;

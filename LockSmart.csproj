@@ -49,6 +49,7 @@
     <Compile Include="ComponentiAggiuntivi.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Font.cs" />
     <Compile Include="LockApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +62,9 @@
     <Compile Include="TinyPort.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="ComponentiAggiuntivi.resx">
+      <DependentUpon>ComponentiAggiuntivi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LockApp.resx">
       <DependentUpon>LockApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +87,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Quicksand-VariableFont_wght.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

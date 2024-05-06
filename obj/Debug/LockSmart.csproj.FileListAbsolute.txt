@@ -19,3 +19,4 @@ C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.exe
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.pdb
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.LockApp.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.InputBox.resources

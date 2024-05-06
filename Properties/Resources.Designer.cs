@@ -59,5 +59,15 @@ namespace LockSmart.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Quicksand_VariableFont_wght {
+            get {
+                object obj = ResourceManager.GetObject("Quicksand_VariableFont_wght", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
