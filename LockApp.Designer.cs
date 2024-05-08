@@ -11,8 +11,7 @@ namespace LockSmart
         /// Variabile di progettazione necessaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        static PersonalFont font = new PersonalFont();
-        PrivateFontCollection QuickSand = font.QuickSand;
+        
         /// <summary>
         /// Pulire le risorse in uso.
         /// </summary>
@@ -41,17 +40,18 @@ namespace LockSmart
             this.RaccoltaPorte = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ChangeCode = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.State = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font(QuickSand.Families[0], 40F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
             this.label1.Location = new System.Drawing.Point(322, 151);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10);
-            this.label1.Size = new System.Drawing.Size(401, 96);
+            this.label1.Size = new System.Drawing.Size(94, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lock Smart";
             // 
@@ -61,7 +61,7 @@ namespace LockSmart
             this.Lock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Lock.FlatAppearance.BorderSize = 0;
             this.Lock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Lock.Location = new System.Drawing.Point(169, 354);
+            this.Lock.Location = new System.Drawing.Point(167, 372);
             this.Lock.Name = "Lock";
             this.Lock.Padding = new System.Windows.Forms.Padding(10);
             this.Lock.Size = new System.Drawing.Size(147, 147);
@@ -75,7 +75,7 @@ namespace LockSmart
             this.UnLock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UnLock.FlatAppearance.BorderSize = 0;
             this.UnLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UnLock.Location = new System.Drawing.Point(752, 354);
+            this.UnLock.Location = new System.Drawing.Point(735, 372);
             this.UnLock.Name = "UnLock";
             this.UnLock.Padding = new System.Windows.Forms.Padding(10);
             this.UnLock.Size = new System.Drawing.Size(147, 147);
@@ -91,8 +91,7 @@ namespace LockSmart
             this.RaccoltaPorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RaccoltaPorte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
             this.RaccoltaPorte.FormattingEnabled = true;
-            this.RaccoltaPorte.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
-            this.RaccoltaPorte.Location = new System.Drawing.Point(872, 33);
+            this.RaccoltaPorte.Location = new System.Drawing.Point(872, 36);
             this.RaccoltaPorte.Margin = new System.Windows.Forms.Padding(0);
             this.RaccoltaPorte.Name = "RaccoltaPorte";
             this.RaccoltaPorte.Size = new System.Drawing.Size(151, 24);
@@ -102,11 +101,10 @@ namespace LockSmart
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
-            this.label2.Location = new System.Drawing.Point(662, 38);
+            this.label2.Location = new System.Drawing.Point(663, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 31);
+            this.label2.Size = new System.Drawing.Size(88, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Porta Seriale:";
             // 
@@ -116,13 +114,32 @@ namespace LockSmart
             this.ChangeCode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ChangeCode.FlatAppearance.BorderSize = 0;
             this.ChangeCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangeCode.Location = new System.Drawing.Point(86, 37);
+            this.ChangeCode.Location = new System.Drawing.Point(1016, 593);
             this.ChangeCode.Name = "ChangeCode";
             this.ChangeCode.Padding = new System.Windows.Forms.Padding(10);
             this.ChangeCode.Size = new System.Drawing.Size(36, 36);
             this.ChangeCode.TabIndex = 6;
             this.ChangeCode.UseVisualStyleBackColor = true;
             this.ChangeCode.Click += new System.EventHandler(this.ChangeCode_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
+            this.label3.Location = new System.Drawing.Point(31, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 16);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Stato:";
+            // 
+            // State
+            // 
+            this.State.AutoSize = true;
+            this.State.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
+            this.State.Location = new System.Drawing.Point(129, 36);
+            this.State.Name = "State";
+            this.State.Size = new System.Drawing.Size(0, 16);
+            this.State.TabIndex = 8;
             // 
             // LockApp
             // 
@@ -131,6 +148,8 @@ namespace LockSmart
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(227)))), ((int)(((byte)(130)))));
             this.ClientSize = new System.Drawing.Size(1064, 641);
+            this.Controls.Add(this.State);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.ChangeCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.RaccoltaPorte);
@@ -156,6 +175,8 @@ namespace LockSmart
         private System.Windows.Forms.ComboBox RaccoltaPorte;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ChangeCode;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label State;
     }
 }
 

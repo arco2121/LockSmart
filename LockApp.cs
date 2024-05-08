@@ -15,10 +15,19 @@ namespace LockSmart
 {
     public partial class LockApp : Form
     {
+        static PersonalFont font = new PersonalFont();
+        static PrivateFontCollection QuickSand = font.QuickSand;
+
         internal PadLock Lucchetto;
+        private Timer Texto;
         public LockApp()
         {
             InitializeComponent();
+            InitializeTimer();
+            this.label1.Font = new System.Drawing.Font(QuickSand.Families[0], 40F, System.Drawing.FontStyle.Bold);
+            this.RaccoltaPorte.Font = new System.Drawing.Font(QuickSand.Families[0], 13F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
+            this.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
         }
 
         private void LockApp_Load(object sender, EventArgs e)
@@ -74,7 +83,7 @@ namespace LockSmart
                         string newcode = box.InText;
                         try 
                         { 
-                            Lucchetto.motore.WriteToPort("/changecode->" + newcode, false);
+                            Lucchetto.motore.WriteToPort("/changecode>" + newcode, false);
                             Lucchetto.code = newcode;
                             File.WriteAllText("Memory.LockSmart", newcode);
                         }
@@ -114,6 +123,21 @@ namespace LockSmart
         private void LockApp_FormClosing(object sender, FormClosingEventArgs e)
         {
             Lucchetto.motore.CheckIfHavetoClose(true);
+        }
+
+        private void InitializeTimer()
+        {
+            Texto = new Timer();
+            Texto.Interval = 100;
+            Texto.Tick += Texto_Tick;
+            Texto.Start();
+        }
+
+        private void Texto_Tick(object sender, EventArgs e)
+        {
+            State.Text = Lucchetto.Locked;
+            Texto.Stop();
+            Texto.Start();
         }
     }
 }

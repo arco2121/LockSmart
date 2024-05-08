@@ -15,16 +15,30 @@ namespace LockSmart
         private bool locked;
         public TinyPort motore;
         public string code;
-        public PadLock(bool initialstate,string code,string port)
+        public PadLock(bool initialstate, string code, string port)
         {
             this.locked = initialstate;
             this.code = code;
             this.motore = new TinyPort(port);
             this.motore.objecta.DataReceived += this.OutUnLock;
-            //this.motore.WriteToPort("/newcode->" + this.code, false);
+            //this.motore.WriteToPort("/newcode>>>>" + this.code, false);
         }
 
-        public bool Locked
+        public string Locked
+        {
+            get 
+            {
+                if(this.locked == true)
+                {
+                    return "Bloccato";
+                }
+                else
+                {
+                    return "Sbloccato";
+                }
+            }
+        }
+        public bool LockedBool
         {
             get => this.locked;
         }
@@ -44,7 +58,7 @@ namespace LockSmart
                     value = user.InText;
                     try 
                     { 
-                        this.motore.WriteToPort("/code->" + value,false);
+                        this.motore.WriteToPort("/code>>>>" + value,false);
                         Thread.Sleep(50);
                         string h = this.motore.ReadFromPort(false);
                         if (h == "Yes")
@@ -97,7 +111,7 @@ namespace LockSmart
                         value = user.InText;
                         try
                         {
-                            this.motore.WriteToPort("/code->" + value, false);
+                            this.motore.WriteToPort("/code>>>>" + value, false);
                             Thread.Sleep(50);
                             string h = this.motore.ReadFromPort(false);
                             if(h == "Yes")
@@ -109,6 +123,11 @@ namespace LockSmart
                                 MessageBox.Show("Chiave Errata", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
+                        catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    }
+                    else
+                    {
+                        try { this.motore.WriteToPort("delete", false); }
                         catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                 }
