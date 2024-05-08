@@ -1,0 +1,11 @@
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\LockSmart.exe.config
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\LockSmart.exe
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\LockSmart.pdb
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.csproj.AssemblyReference.cache
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.InputBox.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.LockApp.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.Properties.Resources.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.csproj.GenerateResource.cache
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.csproj.CoreCompileInputs.cache
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.exe
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.pdb

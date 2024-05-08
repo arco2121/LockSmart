@@ -23,7 +23,6 @@ namespace LockSmart
         public LockApp()
         {
             InitializeComponent();
-            InitializeTimer();
             this.label1.Font = new System.Drawing.Font(QuickSand.Families[0], 40F, System.Drawing.FontStyle.Bold);
             this.RaccoltaPorte.Font = new System.Drawing.Font(QuickSand.Families[0], 13F, System.Drawing.FontStyle.Bold);
             this.label2.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
@@ -42,10 +41,12 @@ namespace LockSmart
             try 
             {
                 Lucchetto = new PadLock(true, Code , Ports[0]);
+                InitializeTimer();
                 RaccoltaPorte.SelectedItem = Ports[0];
             }
-            catch {
-                { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch 
+            {
+                MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 Application.Exit();
             }
         }
@@ -122,7 +123,8 @@ namespace LockSmart
 
         private void LockApp_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Lucchetto.motore.CheckIfHavetoClose(true);
+            try { Lucchetto.motore.CheckIfHavetoClose(true); }
+            catch { }
         }
 
         private void InitializeTimer()
