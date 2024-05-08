@@ -23,13 +23,17 @@ namespace LockSmart
         }
         public void CheckIfHavetoClose(bool haveto)
         {
-            if (haveto)
+            try
             {
-                if (this.objecta != null && this.objecta.IsOpen)
+                if (haveto)
                 {
-                    this.objecta.Close();
+                    if (this.objecta != null && this.objecta.IsOpen)
+                    {
+                        this.objecta.Close();
+                    }
                 }
             }
+            catch { }
         }
 
         public void WriteToPort(string message, bool havetoclose)

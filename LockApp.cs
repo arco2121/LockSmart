@@ -41,6 +41,10 @@ namespace LockSmart
             try 
             {
                 Lucchetto = new PadLock(true, Code , Ports[0]);
+                if(Code == null)
+                {
+                    Application.Exit();
+                }
                 InitializeTimer();
                 RaccoltaPorte.SelectedItem = Ports[0];
             }
@@ -110,8 +114,7 @@ namespace LockSmart
                 }
                 else
                 {
-                    Application.Exit();
-                    return h;
+                    return null;
                 }
             }
         }
