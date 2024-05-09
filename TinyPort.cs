@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,7 @@ namespace LockSmart
         public TinyPort(string port)
         {
             this.objecta = new SerialPort(port, 9600);
-            //this.objecta.Open();
+            this.objecta.Open();
         }
         public void ModifyPort(string porta)
         {
@@ -23,17 +23,13 @@ namespace LockSmart
         }
         public void CheckIfHavetoClose(bool haveto)
         {
-            try
+            if (haveto)
             {
-                if (haveto)
+                if (this.objecta != null && this.objecta.IsOpen)
                 {
-                    if (this.objecta != null && this.objecta.IsOpen)
-                    {
-                        this.objecta.Close();
-                    }
+                    this.objecta.Close();
                 }
             }
-            catch { }
         }
 
         public void WriteToPort(string message, bool havetoclose)
@@ -53,6 +49,19 @@ namespace LockSmart
             else
             {
                 return null;
+            }
+        }
+
+        public string WaitAndRead()
+        {
+            while (true)
+            {
+                string rep = this.ReadFromPort(false);
+                if (rep.Contains("Ok"))
+                {
+                    string[] repa = rep.Split('>');
+                    return repa[1];
+                }
             }
         }
 
