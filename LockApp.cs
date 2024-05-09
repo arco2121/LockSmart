@@ -75,24 +75,47 @@ namespace LockSmart
         private string AskPassword(bool nuovo)
         {
             string h;
-            try { h = File.ReadAllText("Memory.LockSmart"); }
+            try 
+            { 
+                string[] encoded = File.ReadAllLines("Memory.LockSmart");
+                h = Criptografia.DeCripta(encoded[0], encoded[1], encoded[2]);
+            }
             catch { h = ""; }
 
             if(h != "")
             {
                 if (!nuovo)
                 {
-                    InputBox box = new InputBox("Cambia Chiave Esistente");
+                    InputBox box = new InputBox("Insrisci Vecchia Chiave");
                     if (box.ShowDialog() == DialogResult.OK)
                     {
-                        string newcode = box.InText;
-                        try
-                        { 
-                            Lucchetto.code = newcode;
-                            File.WriteAllText("Memory.LockSmart", newcode);
+                        string code = box.InText;
+                        if(code == h)
+                        {
+                            InputBox lox = new InputBox("Insrisci Nuova Chiave");
+                            if(lox.ShowDialog() == DialogResult.OK)
+                            {
+                                string newcode = lox.InText;
+                                try
+                                {
+                                    Lucchetto.code = newcode;
+                                    string[] param = Criptografia.GeneraParametri();
+                                    string encoded = Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
+                                    File.WriteAllText("Memory.LockSmart", encoded);
+                                }
+                                catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                                return newcode;
+                            }
+                            else
+                            {
+                                return h;
+                            }
                         }
-                        catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                        return newcode;
+                        else
+                        {
+                            MessageBox.Show("Chiave Errata", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            return h;
+                        }
                     }
                     else
                         return h;
@@ -104,11 +127,13 @@ namespace LockSmart
             }
             else
             {
-                InputBox box = new InputBox("Inserisci Nuova Chiave");
+                InputBox box = new InputBox("Inserisci Prima Chiave");
                 if (box.ShowDialog() == DialogResult.OK)
                 {
                     string newcode = box.InText;
-                    File.WriteAllText("Memory.LockSmart", newcode);
+                    string[] param = Criptografia.GeneraParametri();
+                    string encoded = Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
+                    File.WriteAllText("Memory.LockSmart", encoded);
                     return newcode;
                 }
                 else
@@ -126,7 +151,13 @@ namespace LockSmart
 
         private void LockApp_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try { Lucchetto.motore.CheckIfHavetoClose(true); }
+            try 
+            { 
+                if(Lucchetto != null)
+                {
+                    Lucchetto.motore.WriteToPort("ClosePort", true);
+                }
+            }
             catch { }
         }
 

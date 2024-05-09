@@ -49,6 +49,7 @@
     <Compile Include="ComponentiAggiuntivi.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Criptografia.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="LockApp.cs">
       <SubType>Form</SubType>

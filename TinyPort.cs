@@ -15,7 +15,7 @@ namespace LockSmart
         public TinyPort(string port)
         {
             this.objecta = new SerialPort(port, 9600);
-            this.objecta.Open();
+            //this.objecta.Open();
         }
         public void ModifyPort(string porta)
         {
