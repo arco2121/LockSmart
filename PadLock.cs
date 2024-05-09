@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -21,7 +21,6 @@ namespace LockSmart
             this.code = code;
             this.motore = new TinyPort(port);
             this.motore.objecta.DataReceived += this.OutUnLock;
-            //this.motore.WriteToPort("/newcode>>>>" + this.code, false);
         }
 
         public string Locked
@@ -58,11 +57,9 @@ namespace LockSmart
                     value = user.InText;
                     try 
                     { 
-                        this.motore.WriteToPort("/code>>>>" + value,false);
-                        Thread.Sleep(50);
-                        string h = this.motore.ReadFromPort(false);
-                        if (h == "Yes")
+                        if (value == this.code)
                         {
+                            this.motore.WriteToPort("OpenPort", false);
                             this.locked = false;
                         }
                         else
@@ -85,7 +82,7 @@ namespace LockSmart
             {
                 try
                 {
-                    this.motore.WriteToPort("true",false);
+                    this.motore.WriteToPort("ClosePort",false);
                     this.locked = true;
                 }
                 catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -111,12 +108,11 @@ namespace LockSmart
                         value = user.InText;
                         try
                         {
-                            this.motore.WriteToPort("/code>>>>" + value, false);
-                            Thread.Sleep(50);
-                            string h = this.motore.ReadFromPort(false);
-                            if(h == "Yes")
+                            if (value == this.code)
                             {
+                                this.motore.WriteToPort("OpenPort", false);
                                 this.locked = false;
+
                             }
                             else
                             {
@@ -127,7 +123,7 @@ namespace LockSmart
                     }
                     else
                     {
-                        try { this.motore.WriteToPort("delete", false); }
+                        try { this.motore.WriteToPort("Delete", false); }
                         catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                 }
