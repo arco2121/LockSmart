@@ -52,9 +52,11 @@ namespace LockSmart
             {
                 string value = "";
                 InputBox user = new InputBox("Inserisci Chiave");
-                if (user.ShowDialog() == DialogResult.OK)
+                user.ShowDialog();
+                if (user.DialogResult == DialogResult.OK)
                 {
-                    value = user.InText;
+                    value = user.TextResult;
+                    user = null;
                     try 
                     { 
                         if (value == this.code)
@@ -102,10 +104,12 @@ namespace LockSmart
                 else
                 {
                     string value = "";
-                    InputBox user = new InputBox("Inserisci Chiave");
-                    if (user.ShowDialog() == DialogResult.OK)
+                    InputBox usera = new InputBox("Inserisci Chiave");
+                    usera.ShowDialog();
+                    if (usera.DialogResult == DialogResult.OK)
                     {
-                        value = user.InText;
+                        value = usera.TextResult;
+                        usera = null;
                         try
                         {
                             if (value == this.code)

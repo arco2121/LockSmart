@@ -136,7 +136,7 @@ namespace LockSmart
             // 
             this.State.AutoSize = true;
             this.State.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(173)))), ((int)(((byte)(132)))));
-            this.State.Location = new System.Drawing.Point(129, 36);
+            this.State.Location = new System.Drawing.Point(135, 36);
             this.State.Name = "State";
             this.State.Size = new System.Drawing.Size(0, 16);
             this.State.TabIndex = 8;

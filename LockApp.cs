@@ -86,16 +86,20 @@ namespace LockSmart
             {
                 if (!nuovo)
                 {
-                    InputBox box = new InputBox("Insrisci Vecchia Chiave");
-                    if (box.ShowDialog() == DialogResult.OK)
+                    InputBox box = new InputBox("Inserisci Vecchia Chiave");
+                    box.ShowDialog();
+                    if (box.DialogResult == DialogResult.OK)
                     {
-                        string code = box.InText;
-                        if(code == h)
+                        string code = box.TextResult;
+                        box = null;
+                        if (code == h)
                         {
-                            InputBox lox = new InputBox("Insrisci Nuova Chiave");
-                            if(lox.ShowDialog() == DialogResult.OK)
+                            InputBox lox = new InputBox("Inserisci Nuova Chiave");
+                            lox.ShowDialog();
+                            if (lox.DialogResult == DialogResult.OK)
                             {
-                                string newcode = lox.InText;
+                                string newcode = lox.TextResult;
+                                lox = null;
                                 try
                                 {
                                     Lucchetto.code = newcode;
@@ -128,9 +132,11 @@ namespace LockSmart
             else
             {
                 InputBox box = new InputBox("Inserisci Prima Chiave");
-                if (box.ShowDialog() == DialogResult.OK)
+                box.ShowDialog();
+                if (box.DialogResult == DialogResult.OK)
                 {
-                    string newcode = box.InText;
+                    string newcode = box.TextResult;
+                    box = null;
                     string[] param = Criptografia.GeneraParametri();
                     string encoded = Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
                     File.WriteAllText("Memory.LockSmart", encoded);

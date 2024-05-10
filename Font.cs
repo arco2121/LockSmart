@@ -19,8 +19,8 @@ namespace LockSmart
 
         public PersonalFont()
         {
-            string filename = "Quicksand-VariableFont_wght.ttf";
-            try { File.WriteAllBytes(filename, Resources.Quicksand_VariableFont_wght); }
+            string filename = "MainFont.ttf";
+            try { File.WriteAllBytes(filename, Resources.MainFont); }
             catch { }
             this.QuickSand.AddFontFile(filename);
         }

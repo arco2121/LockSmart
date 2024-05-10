@@ -8,26 +8,29 @@ using System.Drawing;
 using LockSmart.Properties;
 using System.Drawing.Text;
 using System.IO;
+using System.Windows.Forms.VisualStyles;
 
 namespace LockSmart
 {
     internal class InputBox:Form
     {
+        static PersonalFont font = new PersonalFont();
+        static PrivateFontCollection QuickSand = font.QuickSand;
+
         private TextBox InBox;
         private Button OK;
+        private string InText;
         
         public InputBox(string title)
         {
-            PersonalFont font = new PersonalFont();
-            PrivateFontCollection QuickSand = font.QuickSand;
             InBox = new TextBox();
             OK = new Button();
-            OK.Click += OK_Click;
             this.Text = title;
             this.Controls.Add(InBox);
             this.Controls.Add(OK);
             InBox.Size = new Size(150, 30);
             InBox.Font = this.Font = new System.Drawing.Font("Consolas", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            InBox.PasswordChar = '•';
             InBox.Location = new Point((this.ClientSize.Width - InBox.Width) / 2, (this.ClientSize.Height - InBox.Height) / 2);
             OK.Location = new Point((this.ClientSize.Width - OK.Width) / 2, InBox.Bottom + 50);
             OK.Text = "Invia";
@@ -44,22 +47,20 @@ namespace LockSmart
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             InBox.Padding = new System.Windows.Forms.Padding(30,30,30,30);
             this.Font = new System.Drawing.Font(QuickSand.Families[0], 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            OK.Click += OK_Click;
         }
 
-        public string InText
+        public string TextResult
         {
             get
             {
-                return InBox.Text;
-            }
-            set
-            {
-                InBox.Text = value;
+                return this.InText;
             }
         }
 
         private void OK_Click(object sender, EventArgs e)
         {
+            this.InText = InBox.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
