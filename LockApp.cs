@@ -36,12 +36,10 @@ namespace LockSmart
             {
                 RaccoltaPorte.Items.Add(i);
             }
-            
-            string Code = AskPassword(true);
             try 
             {
-                Lucchetto = new PadLock(true, Code , Ports[0]);
-                if(Code == null)
+                Lucchetto = new PadLock(true, Ports[0]);
+                if(!Lucchetto.IsCode)
                 {
                     Application.Exit();
                 }
@@ -72,87 +70,10 @@ namespace LockSmart
             Lucchetto.motore.ModifyPort(porta);
         }
 
-        private string AskPassword(bool nuovo)
-        {
-            string h;
-            try 
-            { 
-                string[] encoded = File.ReadAllLines("Memory.LockSmart");
-                h = Criptografia.DeCripta(encoded[0], encoded[1], encoded[2]);
-            }
-            catch { h = ""; }
-
-            if(h != "")
-            {
-                if (!nuovo)
-                {
-                    InputBox box = new InputBox("Inserisci Vecchia Chiave");
-                    box.ShowDialog();
-                    if (box.DialogResult == DialogResult.OK)
-                    {
-                        string code = box.TextResult;
-                        box = null;
-                        if (code == h)
-                        {
-                            InputBox lox = new InputBox("Inserisci Nuova Chiave");
-                            lox.ShowDialog();
-                            if (lox.DialogResult == DialogResult.OK)
-                            {
-                                string newcode = lox.TextResult;
-                                lox = null;
-                                try
-                                {
-                                    Lucchetto.code = newcode;
-                                    string[] param = Criptografia.GeneraParametri();
-                                    string encoded = Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
-                                    File.WriteAllText("Memory.LockSmart", encoded);
-                                }
-                                catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                                return newcode;
-                            }
-                            else
-                            {
-                                return h;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Chiave Errata", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            return h;
-                        }
-                    }
-                    else
-                        return h;
-                }
-                else
-                {
-                    return h;
-                }
-            }
-            else
-            {
-                InputBox box = new InputBox("Inserisci Prima Chiave");
-                box.ShowDialog();
-                if (box.DialogResult == DialogResult.OK)
-                {
-                    string newcode = box.TextResult;
-                    box = null;
-                    string[] param = Criptografia.GeneraParametri();
-                    string encoded = Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
-                    File.WriteAllText("Memory.LockSmart", encoded);
-                    return newcode;
-                }
-                else
-                {
-                    Application.Exit();
-                    return h;
-                }
-            }
-        }
 
         private void ChangeCode_Click(object sender, EventArgs e)
         {
-            AskPassword(false);
+            Lucchetto.ChangeCode();
         }
 
         private void LockApp_FormClosing(object sender, FormClosingEventArgs e)
@@ -162,6 +83,7 @@ namespace LockSmart
                 if(Lucchetto != null)
                 {
                     Lucchetto.motore.WriteToPort("ClosePort", true);
+                    Lucchetto.motore.CheckIfHavetoClose(true);
                 }
             }
             catch { }
@@ -180,6 +102,11 @@ namespace LockSmart
             State.Text = Lucchetto.Locked;
             Texto.Stop();
             Texto.Start();
+        }
+
+        private void Log_Click(object sender, EventArgs e)
+        {
+            Lucchetto.GenerateLog();
         }
     }
 }

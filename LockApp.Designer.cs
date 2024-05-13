@@ -42,6 +42,7 @@ namespace LockSmart
             this.ChangeCode = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.State = new System.Windows.Forms.Label();
+            this.Log = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -141,6 +142,20 @@ namespace LockSmart
             this.State.Size = new System.Drawing.Size(0, 16);
             this.State.TabIndex = 8;
             // 
+            // Log
+            // 
+            this.Log.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Log.BackgroundImage")));
+            this.Log.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Log.FlatAppearance.BorderSize = 0;
+            this.Log.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Log.Location = new System.Drawing.Point(12, 593);
+            this.Log.Name = "Log";
+            this.Log.Padding = new System.Windows.Forms.Padding(10);
+            this.Log.Size = new System.Drawing.Size(36, 36);
+            this.Log.TabIndex = 9;
+            this.Log.UseVisualStyleBackColor = true;
+            this.Log.Click += new System.EventHandler(this.Log_Click);
+            // 
             // LockApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -148,6 +163,7 @@ namespace LockSmart
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(227)))), ((int)(((byte)(130)))));
             this.ClientSize = new System.Drawing.Size(1064, 641);
+            this.Controls.Add(this.Log);
             this.Controls.Add(this.State);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ChangeCode);
@@ -177,6 +193,7 @@ namespace LockSmart
         private System.Windows.Forms.Button ChangeCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label State;
+        private System.Windows.Forms.Button Log;
     }
 }
 
