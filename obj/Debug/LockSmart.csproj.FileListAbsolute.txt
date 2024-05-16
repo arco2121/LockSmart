@@ -9,14 +9,15 @@ C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csp
 C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.CoreCompileInputs.cache
 C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.exe
 C:\Users\10934253\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.pdb
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\LockSmart.exe.config
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\LockSmart.exe
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\LockSmart.pdb
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.AssemblyReference.cache
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.Properties.Resources.resources
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.GenerateResource.cache
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.CoreCompileInputs.cache
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.exe
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.pdb
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.LockApp.resources
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.InputBox.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.Opening.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.Settings.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\Kiwi Lock.exe.config
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\Kiwi Lock.exe
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\Kiwi Lock.pdb
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\Kiwi Lock.exe
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\Kiwi Lock.pdb

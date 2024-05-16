@@ -61,12 +61,62 @@ namespace LockSmart.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ClosedLock {
+            get {
+                object obj = ResourceManager.GetObject("ClosedLock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap History {
+            get {
+                object obj = ResourceManager.GetObject("History", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Key {
+            get {
+                object obj = ResourceManager.GetObject("Key", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Byte[].
         /// </summary>
         internal static byte[] MainFont {
             get {
                 object obj = ResourceManager.GetObject("MainFont", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NewLock {
+            get {
+                object obj = ResourceManager.GetObject("NewLock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OpenLock {
+            get {
+                object obj = ResourceManager.GetObject("OpenLock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

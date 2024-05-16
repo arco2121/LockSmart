@@ -13,17 +13,17 @@ using System.Windows.Forms;
 
 namespace LockSmart
 {
-    public partial class LockApp : Form
+    public partial class Settings : Form
     {
         static PersonalFont font = new PersonalFont();
         static PrivateFontCollection QuickSand = font.QuickSand;
 
         internal PadLock Lucchetto;
+        private string nome;
         private Timer Texto;
-        public LockApp()
+        public Settings()
         {
             InitializeComponent();
-            this.label1.Font = new System.Drawing.Font(QuickSand.Families[0], 40F, System.Drawing.FontStyle.Bold);
             this.RaccoltaPorte.Font = new System.Drawing.Font(QuickSand.Families[0], 13F, System.Drawing.FontStyle.Bold);
             this.label2.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
             this.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
@@ -31,24 +31,38 @@ namespace LockSmart
 
         private void LockApp_Load(object sender, EventArgs e)
         {
+            string[] k = File.ReadAllLines("Memory.PadLock");
+            this.nome = k[0];
+            bool instate = Convert.ToBoolean(k[1]);
+            this.Text = "Kiwi Lock - " + this.nome;
             string[] Ports = TinyPort.GetPortNames();
+            bool o = true;
             foreach (string i in Ports)
             {
-                RaccoltaPorte.Items.Add(i);
-            }
-            try 
-            {
-                Lucchetto = new PadLock(true, Ports[0]);
-                if(!Lucchetto.IsCode)
+                try
                 {
-                    Application.Exit();
+                    RaccoltaPorte.Items.Add(i);
+                    Lucchetto = new PadLock(instate, this.nome, i);
+                    if (!Lucchetto.IsCode)
+                    {
+                        Settings Home = new Settings();
+                        Home.ShowDialog();
+                        this.Close();
+                    }
+                    InitializeTimer();
+                    RaccoltaPorte.SelectedItem = i;
+                    o = true;
+                    break;
                 }
-                InitializeTimer();
-                RaccoltaPorte.SelectedItem = Ports[0];
+                catch
+                {
+                    o = false;
+                }
+                Lucchetto = null;
             }
-            catch 
+            if(o == false)
             {
-                MessageBox.Show("Impossibile comunicare con il lucchetto", "LockSmart", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -82,7 +96,6 @@ namespace LockSmart
             { 
                 if(Lucchetto != null)
                 {
-                    Lucchetto.motore.WriteToPort("ClosePort", true);
                     Lucchetto.motore.CheckIfHavetoClose(true);
                 }
             }

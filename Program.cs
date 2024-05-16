@@ -16,7 +16,7 @@ namespace LockSmart
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LockApp());
+            Application.Run(new Opening());
         }
     }
 }

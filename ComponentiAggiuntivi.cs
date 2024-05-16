@@ -9,6 +9,7 @@ using LockSmart.Properties;
 using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms.VisualStyles;
+using System.Resources;
 
 namespace LockSmart
 {
@@ -24,10 +25,12 @@ namespace LockSmart
         
         public InputBox(string title,bool forpassword)
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             InBox = new TextBox();
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.forpassword = forpassword;
             OK = new Button();
-            this.Text = title;
+            this.Text = "Kiwi Lock - " + title;
             this.Controls.Add(InBox);
             this.Controls.Add(OK);
             InBox.Size = new Size(180, 30);
@@ -38,19 +41,18 @@ namespace LockSmart
             }
             InBox.Location = new Point((this.ClientSize.Width - InBox.Width) / 2, (this.ClientSize.Height - InBox.Height) / 2);
             OK.Location = new Point((this.ClientSize.Width - OK.Width) / 2, InBox.Bottom + 50);
-            OK.Text = "Invia";
+            OK.Text = "Invio";
             this.MaximizeBox = false;
-            OK.BackColor = Color.FromArgb(255, 173, 132);
-            this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(227)))), ((int)(((byte)(130)))));
-            OK.ForeColor = Color.Black;
+            OK.BackColor = Color.FromArgb(186, 178, 57);
+            this.BackColor = Color.FromArgb(255, 246, 232);
+            OK.ForeColor = Color.FromArgb(32, 22, 8);
             OK.FlatAppearance.BorderSize = 0;
-            InBox.BackColor = Color.FromArgb(255, 173, 132);
+            InBox.BackColor = Color.FromArgb(255, 246, 232);
             OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             OK.AutoSize = true;
-            InBox.BorderStyle = BorderStyle.None;
-            InBox.ForeColor = Color.Black;
+            InBox.ForeColor = Color.FromArgb(32, 22, 8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            InBox.Padding = new System.Windows.Forms.Padding(30,30,30,30);
+            InBox.Font = new System.Drawing.Font(QuickSand.Families[0], 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Font = new System.Drawing.Font(QuickSand.Families[0], 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             OK.Click += OK_Click;
             InBox.Click += InBox_Click;
@@ -84,6 +86,20 @@ namespace LockSmart
             this.InText = InBox.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputBox));
+            this.SuspendLayout();
+            // 
+            // InputBox
+            // 
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "InputBox";
+            this.ResumeLayout(false);
+
         }
     }
 }

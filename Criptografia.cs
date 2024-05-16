@@ -70,7 +70,6 @@ namespace LockSmart
 
             byte[] chiaveBytes = new byte[lunghezzaChiave];
             byte[] ivBytes = new byte[lunghezzaIV];
-            Random caso = new Random();
             caso.NextBytes(chiaveBytes);
             caso.NextBytes(ivBytes);
             string chiave = Convert.ToBase64String(chiaveBytes);
