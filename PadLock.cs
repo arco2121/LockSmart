@@ -17,11 +17,11 @@ namespace LockSmart
         public SerialPort motore;
         private string code;
         public string nome;
-        public PadLock(bool initialstate, string nome, string port)
+        public PadLock(bool initialstate, string code, string nome, string port)
         {
             this.locked = initialstate;
             this.nome = nome;
-            this.code = AskPassword(true);
+            this.code = code;
             this.motore = new SerialPort(port,9600);
             this.motore.Open();
             try
@@ -40,6 +40,12 @@ namespace LockSmart
 
             }
             this.motore.DataReceived += this.OutUnLock;
+        }
+
+        public PadLock(bool initialstate, string nome)
+        {
+            this.nome = nome;
+            this.locked = initialstate;
         }
 
         public bool IsCode
@@ -141,8 +147,13 @@ namespace LockSmart
             if (this.locked)
             {
                 MessageBox.Show("Il lucchetto è gia bloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.motore.Write("4");
+                try
+                {
+                    this.motore.Write("4");
+                }
+                catch{ }
             }
+
             else
             {
                 try
@@ -225,6 +236,12 @@ namespace LockSmart
             }
         }
 
+        static public string NewPassword(string initialnome)
+        {
+            PadLock FirstSetupPassword = new PadLock(true,initialnome);
+            return FirstSetupPassword.AskPassword(true);
+        }
+
         private string AskPassword(bool nuovo)
         {
             string h;
@@ -285,20 +302,25 @@ namespace LockSmart
             }
             else
             {
-                InputBox box = new InputBox("Prima Chiave", true);
-                box.ShowDialog();
-                if (box.DialogResult == DialogResult.OK)
+                while (true)
                 {
-                    string newcode = box.TextResult;
-                    box = null;
-                    string[] param = Criptografia.GeneraParametri();
-                    string encoded = this.nome + "\n" + this.locked + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
-                    File.WriteAllText("Memory.PadLock", encoded);
-                    return newcode;
-                }
-                else
-                {
-                    return h;
+                    InputBox box = new InputBox("Prima Chiave", true);
+                    box.ShowDialog();
+                    if (box.DialogResult == DialogResult.OK)
+                    {
+                        string newcode = box.TextResult;
+                        box = null;
+                        string[] param = Criptografia.GeneraParametri();
+                        string encoded = this.nome + "\n" + this.locked + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
+                        File.WriteAllText("Memory.PadLock", encoded);
+                        File.WriteAllText("FirstSetup", "true");
+                        Application.Restart();
+                        return newcode;
+                    }
+                    else
+                    { 
+
+                    }
                 }
             }
         }

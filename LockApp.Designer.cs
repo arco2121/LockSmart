@@ -38,6 +38,7 @@ namespace LockSmart
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.State = new System.Windows.Forms.Label();
+            this.Delete = new System.Windows.Forms.Button();
             this.Log = new System.Windows.Forms.Button();
             this.ChangeCode = new System.Windows.Forms.Button();
             this.UnLock = new System.Windows.Forms.Button();
@@ -87,16 +88,30 @@ namespace LockSmart
             this.State.Size = new System.Drawing.Size(0, 16);
             this.State.TabIndex = 8;
             // 
+            // Delete
+            // 
+            this.Delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Delete.FlatAppearance.BorderSize = 0;
+            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Delete.Image = global::LockSmart.Properties.Resources.Delete;
+            this.Delete.Location = new System.Drawing.Point(972, 549);
+            this.Delete.Name = "Delete";
+            this.Delete.Padding = new System.Windows.Forms.Padding(10);
+            this.Delete.Size = new System.Drawing.Size(80, 80);
+            this.Delete.TabIndex = 10;
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
             // Log
             // 
             this.Log.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Log.FlatAppearance.BorderSize = 0;
             this.Log.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Log.Image = ((System.Drawing.Image)(resources.GetObject("Log.Image")));
-            this.Log.Location = new System.Drawing.Point(12, 551);
+            this.Log.Image = global::LockSmart.Properties.Resources.History;
+            this.Log.Location = new System.Drawing.Point(12, 549);
             this.Log.Name = "Log";
             this.Log.Padding = new System.Windows.Forms.Padding(20);
-            this.Log.Size = new System.Drawing.Size(80, 78);
+            this.Log.Size = new System.Drawing.Size(80, 80);
             this.Log.TabIndex = 9;
             this.Log.UseVisualStyleBackColor = true;
             this.Log.Click += new System.EventHandler(this.Log_Click);
@@ -106,11 +121,11 @@ namespace LockSmart
             this.ChangeCode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ChangeCode.FlatAppearance.BorderSize = 0;
             this.ChangeCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangeCode.Image = ((System.Drawing.Image)(resources.GetObject("ChangeCode.Image")));
-            this.ChangeCode.Location = new System.Drawing.Point(967, 551);
+            this.ChangeCode.Image = global::LockSmart.Properties.Resources.Key;
+            this.ChangeCode.Location = new System.Drawing.Point(886, 549);
             this.ChangeCode.Name = "ChangeCode";
             this.ChangeCode.Padding = new System.Windows.Forms.Padding(10);
-            this.ChangeCode.Size = new System.Drawing.Size(85, 78);
+            this.ChangeCode.Size = new System.Drawing.Size(80, 80);
             this.ChangeCode.TabIndex = 6;
             this.ChangeCode.UseVisualStyleBackColor = true;
             this.ChangeCode.Click += new System.EventHandler(this.ChangeCode_Click);
@@ -120,7 +135,7 @@ namespace LockSmart
             this.UnLock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UnLock.FlatAppearance.BorderSize = 0;
             this.UnLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UnLock.Image = ((System.Drawing.Image)(resources.GetObject("UnLock.Image")));
+            this.UnLock.Image = global::LockSmart.Properties.Resources.OpenLock;
             this.UnLock.Location = new System.Drawing.Point(579, 183);
             this.UnLock.Name = "UnLock";
             this.UnLock.Padding = new System.Windows.Forms.Padding(10);
@@ -134,7 +149,7 @@ namespace LockSmart
             this.Lock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Lock.FlatAppearance.BorderSize = 0;
             this.Lock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Lock.Image = ((System.Drawing.Image)(resources.GetObject("Lock.Image")));
+            this.Lock.Image = global::LockSmart.Properties.Resources.ClosedLock;
             this.Lock.Location = new System.Drawing.Point(138, 183);
             this.Lock.Name = "Lock";
             this.Lock.Padding = new System.Windows.Forms.Padding(10);
@@ -149,6 +164,7 @@ namespace LockSmart
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(232)))));
             this.ClientSize = new System.Drawing.Size(1064, 641);
+            this.Controls.Add(this.Delete);
             this.Controls.Add(this.Log);
             this.Controls.Add(this.State);
             this.Controls.Add(this.label3);
@@ -181,6 +197,7 @@ namespace LockSmart
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label State;
         private System.Windows.Forms.Button Log;
+        private System.Windows.Forms.Button Delete;
     }
 }
 

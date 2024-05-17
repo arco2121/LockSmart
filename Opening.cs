@@ -29,7 +29,7 @@ namespace LockSmart
             if(Nome.DialogResult == DialogResult.OK)
             {
                 string h = Nome.TextResult;
-                File.WriteAllText("Memory.PadLock",h + "\n" + "true" + "\n");
+                File.WriteAllText("Memory.PadLock", h + "\n" + "true" + "\n");
                 Settings Lucchetteria = new Settings();
                 Lucchetteria.ShowDialog();
                 this.Close();
