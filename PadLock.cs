@@ -97,9 +97,20 @@ namespace LockSmart
                         {
                             this.motore.Write("1");
                             this.locked = false;
-                            string all = File.ReadAllText("Memory.PadLock");
+                            string all = "";
                             string[] param = File.ReadAllLines("Memory.PadLock");
-                            File.WriteAllText("Memory.PadLock", all + "\n" + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
+                            for (int i = 0; i < param.Length; i++)
+                            {
+                                if (i != 1)
+                                {
+                                    all += param[i] + "\n";
+                                }
+                                else
+                                {
+                                    all += this.locked + "\n";
+                                }
+                            }
+                            File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
                         }
                         else
                         {
@@ -123,18 +134,29 @@ namespace LockSmart
                 {
                     this.motore.Write("0");
                     this.locked = true;
-                    string all = File.ReadAllText("Memory.PadLock");
+                    string all = "";
                     string[] param = File.ReadAllLines("Memory.PadLock");
-                    File.WriteAllText("Memory.PadLock", all + "\n" + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[3], param[4]) + "\n");
+                    for (int i = 0; i < param.Length; i++)
+                    {
+                        if (i != 1)
+                        {
+                            all += param[i] + "\n";
+                        }
+                        else
+                        {
+                            all += this.locked + "\n";
+                        }
+                    }
+                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
                 }
-                catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                catch(Exception ed) { MessageBox.Show(ed+""); MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
 
         private void OutUnLock(object sender, SerialDataReceivedEventArgs e)
         {
-            string res = this.motore.ReadLine();
-            if (res == "request")
+            string res = this.motore.ReadExisting();
+            if (res == "s")
             {
                 if (!this.locked)
                 {
@@ -155,9 +177,20 @@ namespace LockSmart
                             {
                                 this.motore.Write("1");
                                 this.locked = false;
-                                string all = File.ReadAllText("Memory.PadLock");
+                                string all = "";
                                 string[] param = File.ReadAllLines("Memory.PadLock");
-                                File.WriteAllText("Memory.PadLock", all + "\n" + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[1], param[2]) + "\n");
+                                for (int i = 0; i < param.Length; i++)
+                    {
+                        if (i != 1)
+                        {
+                            all += param[i] + "\n";
+                        }
+                        else
+                        {
+                            all += this.locked + "\n";
+                        }
+                    }
+                                File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
                             }
                             else
                             {

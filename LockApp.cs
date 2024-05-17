@@ -66,16 +66,18 @@ namespace LockSmart
                 MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
-            //RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
+            RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
         }
 
         private void Lock_Click(object sender, EventArgs e)
         {
+            Lucchetto.motore.Write("2");
             Lucchetto.Lock();
         }
 
         private void UnLock_Click(object sender, EventArgs e)
         {
+            Lucchetto.motore.Write("2");
             Lucchetto.UnLock();
         }
 
@@ -89,6 +91,7 @@ namespace LockSmart
 
         private void ChangeCode_Click(object sender, EventArgs e)
         {
+            Lucchetto.motore.Write("2");
             Lucchetto.ChangeCode();
         }
 
@@ -98,7 +101,7 @@ namespace LockSmart
             { 
                 if(Lucchetto != null)
                 {
-                    Lucchetto.motore.Close();
+                    Lucchetto.motore.Write("2");
                 }
             }
             catch { }
@@ -122,6 +125,18 @@ namespace LockSmart
         private void Log_Click(object sender, EventArgs e)
         {
             Lucchetto.GenerateLog();
+        }
+
+        private void Settings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                if (Lucchetto != null)
+                {
+                    Lucchetto.motore.Close();
+                }
+            }
+            catch { }
         }
     }
 }

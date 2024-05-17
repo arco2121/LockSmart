@@ -143,7 +143,7 @@ namespace LockSmart
             this.Lock.UseVisualStyleBackColor = true;
             this.Lock.Click += new System.EventHandler(this.Lock_Click);
             // 
-            // LockApp
+            // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -161,9 +161,10 @@ namespace LockSmart
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.MaximizeBox = false;
-            this.Name = "LockApp";
+            this.Name = "Settings";
             this.Text = "Kiwi Lock";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LockApp_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Settings_FormClosed);
             this.Load += new System.EventHandler(this.LockApp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
