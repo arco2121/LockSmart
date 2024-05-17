@@ -90,7 +90,7 @@ namespace LockSmart
 
         private void ChangeCode_Click(object sender, EventArgs e)
         {
-            Lucchetto.motore.Write("2");
+            Lucchetto.motore.Write("4");
             Lucchetto.ChangeCode();
         }
 
