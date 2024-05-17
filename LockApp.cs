@@ -71,7 +71,6 @@ namespace LockSmart
 
         private void Lock_Click(object sender, EventArgs e)
         {
-            Lucchetto.motore.Write("2");
             Lucchetto.Lock();
         }
 
@@ -101,7 +100,7 @@ namespace LockSmart
             { 
                 if(Lucchetto != null)
                 {
-                    Lucchetto.motore.Write("2");
+                    Lucchetto.motore.Write("3");
                 }
             }
             catch { }
