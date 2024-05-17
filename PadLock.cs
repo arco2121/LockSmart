@@ -84,6 +84,7 @@ namespace LockSmart
                 if (!this.locked)
                 {
                     MessageBox.Show("Il lucchetto è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.motore.Write("4");
                 }
                 else
                 {
@@ -140,6 +141,7 @@ namespace LockSmart
             if (this.locked)
             {
                 MessageBox.Show("Il lucchetto è gia bloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.motore.Write("4");
             }
             else
             {
@@ -160,7 +162,7 @@ namespace LockSmart
                             all += this.locked + "\n";
                         }
                     }
-                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
+                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[3], param[4]) + "\n");
                 }
                 catch{ MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
@@ -174,6 +176,7 @@ namespace LockSmart
                 if (!this.locked)
                 {
                     MessageBox.Show("Il lucchetto è gia sbloccato");
+                    this.motore.Write("4");
                 }
                 else
                 {
@@ -193,28 +196,29 @@ namespace LockSmart
                                 string all = "";
                                 string[] param = File.ReadAllLines("Memory.PadLock");
                                 for (int i = 0; i < param.Length; i++)
-                    {
-                        if (i != 1)
-                        {
-                            all += param[i] + "\n";
-                        }
-                        else
-                        {
-                            all += this.locked + "\n";
-                        }
-                    }
+                                {
+                                    if (i != 1)
+                                    {
+                                        all += param[i] + "\n";
+                                    }
+                                    else
+                                    {
+                                        all += this.locked + "\n";
+                                    }
+                                }
                                 File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
                             }
                             else
                             {
                                 MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.motore.Write("4");
                             }
                         }
                         catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                     else
                     {
-                        try { this.motore.Write("0"); }
+                        try { this.motore.Write("4"); }
                         catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                 }
