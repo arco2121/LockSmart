@@ -6,7 +6,9 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,7 +37,7 @@ namespace LockSmart
             this.nome = k[0];
             bool instate = Convert.ToBoolean(k[1]);
             this.Text = "Kiwi Lock - " + this.nome;
-            string[] Ports = TinyPort.GetPortNames();
+            string[] Ports = SerialPort.GetPortNames();
             bool o = true;
             foreach (string i in Ports)
             {
@@ -58,13 +60,13 @@ namespace LockSmart
                 {
                     o = false;
                 }
-                Lucchetto = null;
             }
             if(o == false)
             {
                 MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
+            //RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
         }
 
         private void Lock_Click(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace LockSmart
         {
             ComboBox Ogg = (ComboBox)sender;
             string porta = Ogg.SelectedItem.ToString();
-            Lucchetto.motore.ModifyPort(porta);
+            Lucchetto.motore.PortName = porta;
         }
 
 
@@ -96,7 +98,7 @@ namespace LockSmart
             { 
                 if(Lucchetto != null)
                 {
-                    Lucchetto.motore.CheckIfHavetoClose(true);
+                    Lucchetto.motore.Close();
                 }
             }
             catch { }

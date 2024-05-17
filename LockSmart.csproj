@@ -89,9 +89,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TinyPort.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <EmbeddedResource Include="ComponentiAggiuntivi.resx">
       <DependentUpon>ComponentiAggiuntivi.cs</DependentUpon>
     </EmbeddedResource>

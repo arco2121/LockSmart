@@ -57,7 +57,6 @@ namespace LockSmart
             this.RaccoltaPorte.Name = "RaccoltaPorte";
             this.RaccoltaPorte.Size = new System.Drawing.Size(151, 24);
             this.RaccoltaPorte.TabIndex = 3;
-            this.RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
             // 
             // label2
             // 

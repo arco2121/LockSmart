@@ -14,7 +14,7 @@ namespace LockSmart
     internal class PadLock
     {
         private bool locked;
-        public TinyPort motore;
+        public SerialPort motore;
         private string code;
         public string nome;
         public PadLock(bool initialstate, string nome, string port)
@@ -22,23 +22,24 @@ namespace LockSmart
             this.locked = initialstate;
             this.nome = nome;
             this.code = AskPassword(true);
-            this.motore = new TinyPort(port);
+            this.motore = new SerialPort(port,9600);
+            this.motore.Open();
             try
             {
                 if (this.locked)
                 {
-                    this.motore.WriteToPort("ClosePort", false);
+                    this.motore.Write("0");
                 }
                 else if (!this.locked)
                 {
-                    this.motore.WriteToPort("OpenPort", false);
+                    this.motore.Write("1");
                 }
             }
             catch
             {
 
             }
-            this.motore.objecta.DataReceived += this.OutUnLock;
+            this.motore.DataReceived += this.OutUnLock;
         }
 
         public bool IsCode
@@ -94,18 +95,18 @@ namespace LockSmart
                     { 
                         if (value == this.code)
                         {
-                            this.motore.WriteToPort("OpenPort", false);
+                            this.motore.Write("1");
                             this.locked = false;
                             string all = File.ReadAllText("Memory.PadLock");
                             string[] param = File.ReadAllLines("Memory.PadLock");
-                            File.WriteAllText("Memory.PadLock", all + "\n" + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[1], param[2]) + "\n");
+                            File.WriteAllText("Memory.PadLock", all + "\n" + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
                         }
                         else
                         {
                             MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
-                    catch { MessageBox.Show("Impossibile comunicare con il lucchetto","Kiwi Lock",MessageBoxButtons.OK,MessageBoxIcon.Error); }
+                    catch{ MessageBox.Show("Impossibile comunicare con il lucchetto","Kiwi Lock",MessageBoxButtons.OK,MessageBoxIcon.Error);}
                 }
             }
         }
@@ -120,11 +121,11 @@ namespace LockSmart
             {
                 try
                 {
-                    this.motore.WriteToPort("ClosePort",false);
+                    this.motore.Write("0");
                     this.locked = true;
                     string all = File.ReadAllText("Memory.PadLock");
                     string[] param = File.ReadAllLines("Memory.PadLock");
-                    File.WriteAllText("Memory.PadLock", all + "\n" + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[1], param[2]) + "\n");
+                    File.WriteAllText("Memory.PadLock", all + "\n" + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[3], param[4]) + "\n");
                 }
                 catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
@@ -132,8 +133,7 @@ namespace LockSmart
 
         private void OutUnLock(object sender, SerialDataReceivedEventArgs e)
         {
-            SerialPort port = (SerialPort)sender;
-            string res = port.ReadLine();
+            string res = this.motore.ReadLine();
             if (res == "request")
             {
                 if (!this.locked)
@@ -153,7 +153,7 @@ namespace LockSmart
                         {
                             if (value == this.code)
                             {
-                                this.motore.WriteToPort("OpenPort", false);
+                                this.motore.Write("1");
                                 this.locked = false;
                                 string all = File.ReadAllText("Memory.PadLock");
                                 string[] param = File.ReadAllLines("Memory.PadLock");
@@ -168,7 +168,7 @@ namespace LockSmart
                     }
                     else
                     {
-                        try { this.motore.WriteToPort("ClosePort", false); }
+                        try { this.motore.Write("0"); }
                         catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                 }
