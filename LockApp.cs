@@ -48,7 +48,7 @@ namespace LockSmart
                     if (!Lucchetto.IsCode)
                     {
                         Settings Home = new Settings();
-                        Home.ShowDialog();
+                        Home.Show();
                         this.Close();
                     }
                     InitializeTimer();
@@ -76,7 +76,6 @@ namespace LockSmart
 
         private void UnLock_Click(object sender, EventArgs e)
         {
-            Lucchetto.motore.Write("2");
             Lucchetto.UnLock();
         }
 
@@ -89,8 +88,7 @@ namespace LockSmart
 
 
         private void ChangeCode_Click(object sender, EventArgs e)
-        {
-            Lucchetto.motore.Write("4");
+        { 
             Lucchetto.ChangeCode();
         }
 

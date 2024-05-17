@@ -78,47 +78,60 @@ namespace LockSmart
 
         public void UnLock()
         {
-            if (!this.locked) 
-            {
-                MessageBox.Show("Il lucchetto è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                string value = "";
-                InputBox user = new InputBox("Chiave",true);
-                user.ShowDialog();
-                if (user.DialogResult == DialogResult.OK)
+            try 
+            { 
+                this.motore.Write("2");
+                if (!this.locked)
                 {
-                    value = user.TextResult;
-                    user = null;
-                    try 
-                    { 
-                        if (value == this.code)
-                        {
-                            this.motore.Write("1");
-                            this.locked = false;
-                            string all = "";
-                            string[] param = File.ReadAllLines("Memory.PadLock");
-                            for (int i = 0; i < param.Length; i++)
-                            {
-                                if (i != 1)
-                                {
-                                    all += param[i] + "\n";
-                                }
-                                else
-                                {
-                                    all += this.locked + "\n";
-                                }
-                            }
-                            File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                    }
-                    catch{ MessageBox.Show("Impossibile comunicare con il lucchetto","Kiwi Lock",MessageBoxButtons.OK,MessageBoxIcon.Error);}
+                    MessageBox.Show("Il lucchetto è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else
+                {
+                    string value = "";
+                    InputBox user = new InputBox("Chiave", true);
+                    user.ShowDialog();
+                    if (user.DialogResult == DialogResult.OK)
+                    {
+                        value = user.TextResult;
+                        user = null;
+                        try
+                        {
+                            if (value == this.code)
+                            {
+                                this.motore.Write("1");
+                                this.locked = false;
+                                string all = "";
+                                string[] param = File.ReadAllLines("Memory.PadLock");
+                                for (int i = 0; i < param.Length; i++)
+                                {
+                                    if (i != 1)
+                                    {
+                                        all += param[i] + "\n";
+                                    }
+                                    else
+                                    {
+                                        all += this.locked + "\n";
+                                    }
+                                }
+                                File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                this.motore.Write("4");
+                            }
+                        }
+                        catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    }
+                    else
+                    {
+                        this.motore.Write("4");
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -288,7 +301,16 @@ namespace LockSmart
 
         public void ChangeCode()
         {
-            this.code = AskPassword(false);
+            try
+            {
+                this.motore.Write("2");
+                this.code = AskPassword(false);
+                this.motore.Write("4");
+            }
+            catch
+            {
+                MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void GenerateLog()

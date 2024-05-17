@@ -162,6 +162,7 @@ namespace LockSmart
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.MaximizeBox = false;
             this.Name = "Settings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kiwi Lock";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LockApp_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Settings_FormClosed);
