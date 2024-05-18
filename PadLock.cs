@@ -23,7 +23,7 @@ namespace LockSmart
             this.nome = nome;
             this.code = code;
             this.motore = new SerialPort(port,9600);
-            this.motore.Open();
+            //this.motore.Open();
             try
             {
                 if (this.locked)
@@ -314,6 +314,7 @@ namespace LockSmart
                         string encoded = this.nome + "\n" + this.locked + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
                         File.WriteAllText("Memory.PadLock", encoded);
                         File.WriteAllText("FirstSetup", "true");
+                        File.WriteAllText("Reloading","true");
                         Application.Restart();
                         return newcode;
                     }

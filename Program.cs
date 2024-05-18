@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,12 +20,18 @@ namespace LockSmart
             const string appname = "Kiwi Lock";
             bool newone;
             cosino = new Mutex(true, appname, out newone);
-
-            if(!newone)
+            if (!File.Exists("Reloading"))
             {
-                MessageBox.Show("App già in esecuzione", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Application.Exit();
-                return;
+                if (!newone)
+                {
+                    MessageBox.Show("App già in esecuzione", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Application.Exit();
+                    return;
+                }
+            }
+            else
+            {
+                File.Delete("Reloading");
             }
 
             Application.EnableVisualStyles();

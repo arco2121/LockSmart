@@ -28,34 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Opening));
-            this.label1 = new System.Windows.Forms.Label();
             this.Lock = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(116)))), ((int)(((byte)(18)))));
-            this.label1.Location = new System.Drawing.Point(225, 66);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(10);
-            this.label1.Size = new System.Drawing.Size(82, 36);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Kiwi Lock";
             // 
             // Lock
             // 
+            this.Lock.BackColor = System.Drawing.Color.Transparent;
             this.Lock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Lock.FlatAppearance.BorderSize = 0;
             this.Lock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Lock.Image = global::LockSmart.Properties.Resources.NewLock;
-            this.Lock.Location = new System.Drawing.Point(292, 201);
+            this.Lock.Location = new System.Drawing.Point(310, 259);
             this.Lock.Name = "Lock";
-            this.Lock.Size = new System.Drawing.Size(196, 190);
+            this.Lock.Size = new System.Drawing.Size(180, 180);
             this.Lock.TabIndex = 2;
-            this.Lock.UseVisualStyleBackColor = true;
+            this.Lock.UseVisualStyleBackColor = false;
             this.Lock.Click += new System.EventHandler(this.Lock_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(116)))), ((int)(((byte)(18)))));
+            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
+            this.label1.Location = new System.Drawing.Point(100, 31);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(10);
+            this.label1.Size = new System.Drawing.Size(600, 225);
+            this.label1.TabIndex = 1;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Opening
             // 
@@ -63,9 +73,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(232)))));
+            this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Lock);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -74,13 +87,12 @@
             this.Text = "Kiwi Lock";
             this.Load += new System.EventHandler(this.Opening_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Lock;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

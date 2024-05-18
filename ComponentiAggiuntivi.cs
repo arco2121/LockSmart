@@ -22,10 +22,13 @@ namespace LockSmart
         private bool forpassword;
         private Button OK;
         private string InText;
+        private Label Nonsbirciare;
         
         public InputBox(string title,bool forpassword)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
+            this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Tile;
             InBox = new TextBox();
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.forpassword = forpassword;

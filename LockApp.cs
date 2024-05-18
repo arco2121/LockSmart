@@ -148,6 +148,7 @@ namespace LockSmart
             try
             {
                 File.Delete("Memory.PadLock");
+                File.WriteAllText("Reloading", "true");
                 Application.Restart();
             }
             catch

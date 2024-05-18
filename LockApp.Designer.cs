@@ -53,17 +53,18 @@ namespace LockSmart
             this.RaccoltaPorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RaccoltaPorte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(22)))), ((int)(((byte)(8)))));
             this.RaccoltaPorte.FormattingEnabled = true;
-            this.RaccoltaPorte.Location = new System.Drawing.Point(872, 36);
+            this.RaccoltaPorte.Location = new System.Drawing.Point(883, 36);
             this.RaccoltaPorte.Margin = new System.Windows.Forms.Padding(0);
             this.RaccoltaPorte.Name = "RaccoltaPorte";
-            this.RaccoltaPorte.Size = new System.Drawing.Size(151, 24);
+            this.RaccoltaPorte.Size = new System.Drawing.Size(140, 24);
             this.RaccoltaPorte.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(22)))), ((int)(((byte)(8)))));
-            this.label2.Location = new System.Drawing.Point(663, 36);
+            this.label2.Location = new System.Drawing.Point(675, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 16);
             this.label2.TabIndex = 4;
@@ -72,6 +73,7 @@ namespace LockSmart
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(22)))), ((int)(((byte)(8)))));
             this.label3.Location = new System.Drawing.Point(31, 36);
             this.label3.Name = "label3";
@@ -90,72 +92,77 @@ namespace LockSmart
             // 
             // Delete
             // 
+            this.Delete.BackColor = System.Drawing.Color.Transparent;
             this.Delete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Delete.FlatAppearance.BorderSize = 0;
             this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Delete.Image = global::LockSmart.Properties.Resources.Delete;
-            this.Delete.Location = new System.Drawing.Point(972, 549);
+            this.Delete.Image = global::LockSmart.Properties.Resources.BinIcon;
+            this.Delete.Location = new System.Drawing.Point(751, 520);
             this.Delete.Name = "Delete";
             this.Delete.Padding = new System.Windows.Forms.Padding(10);
             this.Delete.Size = new System.Drawing.Size(80, 80);
             this.Delete.TabIndex = 10;
-            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.UseVisualStyleBackColor = false;
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // Log
             // 
+            this.Log.BackColor = System.Drawing.Color.Transparent;
             this.Log.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Log.FlatAppearance.BorderSize = 0;
             this.Log.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Log.Image = global::LockSmart.Properties.Resources.History;
-            this.Log.Location = new System.Drawing.Point(12, 549);
+            this.Log.Image = ((System.Drawing.Image)(resources.GetObject("Log.Image")));
+            this.Log.Location = new System.Drawing.Point(230, 520);
             this.Log.Name = "Log";
             this.Log.Padding = new System.Windows.Forms.Padding(20);
             this.Log.Size = new System.Drawing.Size(80, 80);
             this.Log.TabIndex = 9;
-            this.Log.UseVisualStyleBackColor = true;
+            this.Log.UseVisualStyleBackColor = false;
             this.Log.Click += new System.EventHandler(this.Log_Click);
             // 
             // ChangeCode
             // 
+            this.ChangeCode.BackColor = System.Drawing.Color.Transparent;
             this.ChangeCode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ChangeCode.FlatAppearance.BorderSize = 0;
             this.ChangeCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ChangeCode.Image = global::LockSmart.Properties.Resources.Key;
-            this.ChangeCode.Location = new System.Drawing.Point(886, 549);
+            this.ChangeCode.Location = new System.Drawing.Point(489, 520);
             this.ChangeCode.Name = "ChangeCode";
             this.ChangeCode.Padding = new System.Windows.Forms.Padding(10);
             this.ChangeCode.Size = new System.Drawing.Size(80, 80);
             this.ChangeCode.TabIndex = 6;
-            this.ChangeCode.UseVisualStyleBackColor = true;
+            this.ChangeCode.UseVisualStyleBackColor = false;
             this.ChangeCode.Click += new System.EventHandler(this.ChangeCode_Click);
             // 
             // UnLock
             // 
+            this.UnLock.BackColor = System.Drawing.Color.Transparent;
             this.UnLock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UnLock.FlatAppearance.BorderSize = 0;
             this.UnLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UnLock.Image = global::LockSmart.Properties.Resources.OpenLock;
-            this.UnLock.Location = new System.Drawing.Point(579, 183);
+            this.UnLock.Location = new System.Drawing.Point(621, 133);
             this.UnLock.Name = "UnLock";
             this.UnLock.Padding = new System.Windows.Forms.Padding(10);
-            this.UnLock.Size = new System.Drawing.Size(341, 330);
+            this.UnLock.Size = new System.Drawing.Size(340, 340);
             this.UnLock.TabIndex = 2;
-            this.UnLock.UseVisualStyleBackColor = true;
+            this.UnLock.UseVisualStyleBackColor = false;
             this.UnLock.Click += new System.EventHandler(this.UnLock_Click);
             // 
             // Lock
             // 
+            this.Lock.BackColor = System.Drawing.Color.Transparent;
             this.Lock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Lock.FlatAppearance.BorderSize = 0;
             this.Lock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Lock.Image = global::LockSmart.Properties.Resources.ClosedLock;
-            this.Lock.Location = new System.Drawing.Point(138, 183);
+            this.Lock.Location = new System.Drawing.Point(100, 133);
             this.Lock.Name = "Lock";
             this.Lock.Padding = new System.Windows.Forms.Padding(10);
-            this.Lock.Size = new System.Drawing.Size(341, 330);
+            this.Lock.Size = new System.Drawing.Size(340, 340);
             this.Lock.TabIndex = 1;
-            this.Lock.UseVisualStyleBackColor = true;
+            this.Lock.UseVisualStyleBackColor = false;
             this.Lock.Click += new System.EventHandler(this.Lock_Click);
             // 
             // Settings
@@ -163,6 +170,8 @@ namespace LockSmart
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(232)))));
+            this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1064, 641);
             this.Controls.Add(this.Delete);
             this.Controls.Add(this.Log);
@@ -173,6 +182,7 @@ namespace LockSmart
             this.Controls.Add(this.RaccoltaPorte);
             this.Controls.Add(this.UnLock);
             this.Controls.Add(this.Lock);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);

@@ -125,13 +125,7 @@
     <None Include="ClosedLock.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClosedLock.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="OpenLock.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="History.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.ico" />
@@ -140,7 +134,10 @@
     <None Include="NewLock.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Delete.ico" />
+    <None Include="Logo.png" />
+    <None Include="KiwiBackground.png" />
+    <None Include="BinIcon.ico" />
+    <None Include="History.ico" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
