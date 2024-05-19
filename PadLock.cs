@@ -275,7 +275,7 @@ namespace LockSmart
                                 {
                                     this.code = newcode;
                                     string[] param = Criptografia.GeneraParametri();
-                                    string encoded = this.nome + "\n" + this.locked + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1] + "\n" + Criptografia.Cripta(DateTime.Now + " Password Cambiata",param[0],param[1]) + "\n";
+                                    string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1] + "\n" + Criptografia.Cripta(DateTime.Now + " Password Cambiata",param[0],param[1]) + "\n";
                                     File.WriteAllText("Memory.PadLock", encoded);
                                 }
                                 catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -311,7 +311,7 @@ namespace LockSmart
                         string newcode = box.TextResult;
                         box = null;
                         string[] param = Criptografia.GeneraParametri();
-                        string encoded = this.nome + "\n" + this.locked + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
+                        string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
                         File.WriteAllText("Memory.PadLock", encoded);
                         File.WriteAllText("FirstSetup", "true");
                         File.WriteAllText("Reloading","true");
@@ -350,8 +350,15 @@ namespace LockSmart
                 {
                     text += Criptografia.DeCripta(content[i], content[3], content[4]) + "\n";
                 }
-                File.WriteAllText("Log.PadLock",text);
-                MessageBox.Show("Log Generato", "Kiwi Lock", MessageBoxButtons.OK);
+                if(text != "")
+                {
+                    File.WriteAllText("Log-PadLock.txt", text);
+                    MessageBox.Show("Log Generato", "Kiwi Lock", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Nessun dato di Log", "Kiwi Lock", MessageBoxButtons.OK);
+                }
             }
             catch
             {

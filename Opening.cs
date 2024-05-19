@@ -14,12 +14,9 @@ namespace LockSmart
 {
     public partial class Opening : Form
     {
-        static PersonalFont font = new PersonalFont();
-        static PrivateFontCollection QuickSand = font.QuickSand;
         public Opening()
         {
             InitializeComponent();
-            this.label1.Font = new System.Drawing.Font(QuickSand.Families[0], 40F, System.Drawing.FontStyle.Bold);
         }
 
         private void Lock_Click(object sender, EventArgs e)
@@ -29,40 +26,47 @@ namespace LockSmart
             if(Nome.DialogResult == DialogResult.OK)
             {
                 string h = Nome.TextResult;
-                File.WriteAllText("Memory.PadLock", h + "\n" + "true" + "\n");
-                Settings Lucchetteria = new Settings();
-                Lucchetteria.ShowDialog();
-                this.Close();
+                string pass = PadLock.NewPassword(h);
             }
         }
 
         private void Opening_Load(object sender, EventArgs e)
         {
-            string h;
-            try
+           try
             {
-                string[] k = File.ReadAllLines("Memory.PadLock");
-                h = k[2];
+                string h;
+                try
+                {
+                    string[] k = File.ReadAllLines("Memory.PadLock");
+                    h = k[2];
+                }
+                catch
+                {
+                    h = "";
+                }
+                if (h != "")
+                {
+                    Settings Lucchetteria = new Settings();
+                    Lucchetteria.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+
+                }
             }
             catch
             {
-                h = "";
-            }
-            if (h != "")
-            {
-                Settings Lucchetteria = new Settings();
-                Lucchetteria.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-
+                MessageBox.Show("Impossibile leggere i dati. PadLock resettato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                File.Delete("Memory.PadLock");
+                Application.Exit();
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Info_Click(object sender, EventArgs e)
         {
-
+            Informazioni Info = new Informazioni();
+            Info.ShowDialog();
         }
     }
 }

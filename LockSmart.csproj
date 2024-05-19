@@ -73,11 +73,17 @@
     </Compile>
     <Compile Include="Criptografia.cs" />
     <Compile Include="Font.cs" />
-    <Compile Include="LockApp.cs">
+    <Compile Include="Informazioni.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LockApp.Designer.cs">
-      <DependentUpon>LockApp.cs</DependentUpon>
+    <Compile Include="Informazioni.Designer.cs">
+      <DependentUpon>Informazioni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Opening.cs">
       <SubType>Form</SubType>
@@ -96,8 +102,11 @@
     <EmbeddedResource Include="ComponentiAggiuntivi.resx">
       <DependentUpon>ComponentiAggiuntivi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LockApp.resx">
-      <DependentUpon>LockApp.cs</DependentUpon>
+    <EmbeddedResource Include="Informazioni.resx">
+      <DependentUpon>Informazioni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opening.resx">
       <DependentUpon>Opening.cs</DependentUpon>
@@ -134,6 +143,9 @@
     <None Include="NewLock.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="IconTiny.png" />
+    <None Include="LogoTiny.png" />
+    <None Include="InfoIcon.ico" />
     <None Include="Logo.png" />
     <None Include="KiwiBackground.png" />
     <None Include="BinIcon.ico" />

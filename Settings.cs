@@ -34,45 +34,54 @@ namespace LockSmart
 
         private void LockApp_Load(object sender, EventArgs e)
         {
-            string[] prama = File.ReadAllLines("Memory.PadLock");
-            string firstsetupif = "";
-            try
+           try
             {
-                firstsetupif = File.ReadAllText("FirstSetup");
-            }
-            catch
-            {
-                firstsetupif = "";
-            }
-            this.nome = prama[0];
-            bool instate = Convert.ToBoolean(prama[1]);
-            this.Text = "Kiwi Lock - " + this.nome;
-            string passw = PadLock.NewPassword(this.nome);
-            if(firstsetupif != "true")
-            {
-                InputBox Pass = new InputBox("Chiave", true);
-                Pass.ShowDialog();
-                if(Pass.DialogResult == DialogResult.OK)
+                string[] prama = File.ReadAllLines("Memory.PadLock");
+                string firstsetupif = "";
+                try
                 {
-                    if(Pass.TextResult == Criptografia.DeCripta(prama[2], prama[3], prama[4]))
+                    firstsetupif = File.ReadAllText("FirstSetup");
+                }
+                catch
+                {
+                    firstsetupif = "";
+                }
+                this.nome = Criptografia.DeCripta(prama[0], prama[3], prama[4]);
+                bool instate = Convert.ToBoolean(Criptografia.DeCripta(prama[1], prama[3], prama[4]));
+                this.Text = "Kiwi Lock - " + this.nome;
+                string passw = Criptografia.DeCripta(prama[2], prama[3], prama[4]);
+                if (firstsetupif != "true")
+                {
+                    InputBox Pass = new InputBox("Chiave", true);
+                    Pass.ShowDialog();
+                    if (Pass.DialogResult == DialogResult.OK)
                     {
-                        InitializeAll(instate,passw);
+                        if (Pass.TextResult == Criptografia.DeCripta(prama[2], prama[3], prama[4]))
+                        {
+                            InitializeAll(instate, passw);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            Application.Exit();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         Application.Exit();
                     }
                 }
                 else
                 {
-                    Application.Exit();
+                    File.Delete("FirstSetup");
+                    InitializeAll(instate, passw);
                 }
             }
-            else
+            catch
             {
-                File.Delete("FirstSetup");
-                InitializeAll(instate,passw);
+                MessageBox.Show("Impossibile leggere i dati. PadLock resettato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                File.Delete("Memory.PadLock");
+                Application.Exit();
             }
         }
 
@@ -189,6 +198,12 @@ namespace LockSmart
                 Application.Exit();
             }
             RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
+        }
+
+        private void Info_Click(object sender, EventArgs e)
+        {
+            Informazioni Info = new Informazioni();
+            Info.ShowDialog();
         }
     }
 }

@@ -39,27 +39,37 @@ namespace LockSmart
 
         static public string DeCripta(string testoCifrato, string chiave, string vettore)
         {
-            byte[] testoCifratoBy = Convert.FromBase64String(testoCifrato);
-            byte[] chiaveBy = Convert.FromBase64String(chiave);
-            byte[] vettoreBy = Convert.FromBase64String(vettore);
-
-            using (Aes aesAlg = Aes.Create())
+            try
             {
-                aesAlg.Key = chiaveBy;
-                aesAlg.IV = vettoreBy;
+                byte[] testoCifratoBy = Convert.FromBase64String(testoCifrato);
+                byte[] chiaveBy = Convert.FromBase64String(chiave);
+                byte[] vettoreBy = Convert.FromBase64String(vettore);
 
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-
-                using (MemoryStream msDecrypt = new MemoryStream(testoCifratoBy))
+                using (Aes aesAlg = Aes.Create())
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    aesAlg.Key = chiaveBy;
+                    aesAlg.IV = vettoreBy;
+
+                    ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                    using (MemoryStream msDecrypt = new MemoryStream(testoCifratoBy))
                     {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                         {
-                            return srDecrypt.ReadToEnd();
+                            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                            {
+                                return srDecrypt.ReadToEnd();
+                            }
                         }
                     }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Impossibile leggere i dati. PadLock resettato","Kiwi Lock",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                File.Delete("Memory.PadLock");
+                Application.Exit();
+                return "";
             }
         }
 

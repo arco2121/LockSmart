@@ -28,7 +28,7 @@ namespace LockSmart
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Tile;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             InBox = new TextBox();
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.forpassword = forpassword;

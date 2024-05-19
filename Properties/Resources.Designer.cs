@@ -93,6 +93,26 @@ namespace LockSmart.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconTiny {
+            get {
+                object obj = ResourceManager.GetObject("IconTiny", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InfoIcon {
+            get {
+                object obj = ResourceManager.GetObject("InfoIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Key {
             get {
                 object obj = ResourceManager.GetObject("Key", resourceCulture);
@@ -116,6 +136,16 @@ namespace LockSmart.Properties {
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoTiny {
+            get {
+                object obj = ResourceManager.GetObject("LogoTiny", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
