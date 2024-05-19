@@ -1,11 +1,17 @@
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\LockSmart.exe.config
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\LockSmart.exe
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\LockSmart.pdb
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.csproj.AssemblyReference.cache
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.InputBox.resources
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.LockApp.resources
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.Properties.Resources.resources
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.csproj.GenerateResource.cache
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.csproj.CoreCompileInputs.cache
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.exe
-C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.pdb
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\Kiwi Lock.exe.config
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\Kiwi Lock.exe.manifest
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\Kiwi Lock.application
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\Kiwi Lock.exe
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Release\Kiwi Lock.pdb
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.Informazioni.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.Settings.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\LockSmart.Opening.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\Kiwi Lock.exe.manifest
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\Kiwi Lock.application
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\Kiwi Lock.exe
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Release\Kiwi Lock.pdb

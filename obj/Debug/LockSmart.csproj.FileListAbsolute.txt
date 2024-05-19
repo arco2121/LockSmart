@@ -22,3 +22,7 @@ C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\Kiwi Lock.pdb
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\Kiwi Lock.exe
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\Kiwi Lock.pdb
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.Informazioni.resources
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\Kiwi Lock.exe.manifest
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\Kiwi Lock.application
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\Kiwi Lock.exe.manifest
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\Kiwi Lock.application

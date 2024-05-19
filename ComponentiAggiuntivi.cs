@@ -22,15 +22,11 @@ namespace LockSmart
         private bool forpassword;
         private Button OK;
         private string InText;
-        private Label Nonsbirciare;
         
         public InputBox(string title,bool forpassword)
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            InitializeComponent();
             InBox = new TextBox();
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.forpassword = forpassword;
             OK = new Button();
             this.Text = "Kiwi Lock - " + title;
@@ -98,6 +94,9 @@ namespace LockSmart
             // 
             // InputBox
             // 
+            this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ClientSize = new System.Drawing.Size(282, 253);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InputBox";
