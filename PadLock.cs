@@ -63,6 +63,11 @@ namespace LockSmart
             }
         }
 
+        public string Code
+        {
+            get => this.code;
+        }
+
         public string Locked
         {
             get 

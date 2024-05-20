@@ -156,9 +156,25 @@ namespace LockSmart
         {
             try
             {
-                File.Delete("Memory.PadLock");
-                File.WriteAllText("Reloading", "true");
-                Application.Restart();
+                InputBox Pass = new InputBox("Chiave",true);
+                Pass.ShowDialog();
+                if(Pass.DialogResult == DialogResult.OK)
+                {
+                    if(Pass.TextResult == Lucchetto.Code)
+                    {
+                        File.Delete("Memory.PadLock");
+                        File.WriteAllText("Reloading", "true");
+                        Application.Restart();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+
+                }
             }
             catch
             {
@@ -178,9 +194,8 @@ namespace LockSmart
                     Lucchetto = new PadLock(instate, passw, this.nome, i);
                     if (!Lucchetto.IsCode)
                     {
-                        Settings Home = new Settings();
-                        Home.Show();
-                        this.Close();
+                        File.WriteAllText("Reloading", "true");
+                        Application.Restart();
                     }
                     InitializeTimer();
                     RaccoltaPorte.SelectedItem = i;
