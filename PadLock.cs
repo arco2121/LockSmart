@@ -23,7 +23,7 @@ namespace LockSmart
             this.nome = nome;
             this.code = code;
             this.motore = new SerialPort(port,9600);
-            //this.motore.Open();
+            this.motore.Open();
             try
             {
                 if (this.locked)
