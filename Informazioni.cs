@@ -31,7 +31,7 @@ namespace LockSmart
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://docs.google.com/document/d/1iKKaZuwRTrkhoRk9N2YKxfXCy-Y4JO15MOydd83s0bQ/edit?usp=sharing");
+            System.Diagnostics.Process.Start("https://abcia2.com/School/KiwiLock");
         }
     }
 }

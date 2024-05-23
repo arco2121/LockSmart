@@ -46,7 +46,7 @@ namespace LockSmart
                 }
                 if (h != "")
                 {
-                    Settings Lucchetteria = new Settings();
+                    Instruction Lucchetteria = new Instruction();
                     Lucchetteria.ShowDialog();
                     this.Close();
                 }
@@ -59,7 +59,7 @@ namespace LockSmart
             {
                 MessageBox.Show("Impossibile leggere i dati. PadLock resettato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 File.Delete("Memory.PadLock");
-                Application.Exit();
+                Environment.Exit(1);
             }
         }
 

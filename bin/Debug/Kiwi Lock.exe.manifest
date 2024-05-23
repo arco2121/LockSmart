@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiwi Lock.exe" size="1425888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiwi Lock.exe" size="1508832">
       <assemblyIdentity name="Kiwi Lock" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8ojtSHpKVjiqFcWGiJRGYtsfIxpo2zZutbpCeyeMuFg=</dsig:DigestValue>
+        <dsig:DigestValue>ygfs1S4vA1s7Awjd11t4+YLlQ1YasixnF529Dwt0pjg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

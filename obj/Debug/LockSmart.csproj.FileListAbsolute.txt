@@ -29,3 +29,4 @@ C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\Kiwi Lock.applic
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\InTheHand.Net.Bluetooth.dll
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\bin\Debug\InTheHand.Net.Bluetooth.xml
 C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.csproj.Up2Date
+C:\Users\colom\OneDrive\Desktop\Progetti C#\LockSmart\obj\Debug\LockSmart.Instruction.resources

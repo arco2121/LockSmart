@@ -25,7 +25,7 @@ namespace LockSmart
                 if (!newone)
                 {
                     MessageBox.Show("App già in esecuzione", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Application.Exit();
+                    Environment.Exit(1);
                     return;
                 }
             }

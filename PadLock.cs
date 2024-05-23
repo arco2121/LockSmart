@@ -279,9 +279,20 @@ namespace LockSmart
                                 try
                                 {
                                     this.code = newcode;
+                                    string all = "";
                                     string[] param = Criptografia.GeneraParametri();
-                                    string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1] + "\n" + Criptografia.Cripta(DateTime.Now + " Password Cambiata", param[0], param[1]) + "\n";
-                                    File.WriteAllText("Memory.PadLock", encoded);
+                                    for (int i = 0; i < param.Length; i++)
+                                    {
+                                        if (i != 1)
+                                        {
+                                            all += param[i] + "\n";
+                                        }
+                                        else
+                                        {
+                                            all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
+                                        }
+                                    }
+                                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Password Cambiata", param[3], param[4]) + "\n");
                                 }
                                 catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                                 return newcode;
