@@ -74,9 +74,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Instruction";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Kiwi Lock - Aspettando";
+            this.Text = "Kiwi Lock - In Attesa";
             this.Load += new System.EventHandler(this.Instruction_Load);
             this.Shown += new System.EventHandler(this.Instruction_Shown);
             this.ResumeLayout(false);
