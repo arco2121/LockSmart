@@ -1,4 +1,5 @@
-﻿using LockSmart.Properties;
+﻿using InTheHand.Net.Sockets;
+using LockSmart.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
+using InTheHand.Net.Bluetooth;
 
 namespace LockSmart
 {
@@ -24,6 +25,7 @@ namespace LockSmart
         internal PadLock Lucchetto;
         private string nome;
         private Timer Texto;
+
         public Settings()
         {
             InitializeComponent();
@@ -184,21 +186,38 @@ namespace LockSmart
 
         private void InitializeAll(bool instate,string passw)
         {
+            RadioMode State;
+            BluetoothRadio radio = null;
+            try
+            {
+                radio = BluetoothRadio.Default;
+                State = radio.Mode;
+            }
+            catch
+            {
+                State = RadioMode.PowerOff;
+            }
+            if (!(State == RadioMode.PowerOff))
+            {
+                MessageBox.Show("Spegnere il Bluethooth per il corretto funzionamento", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                radio.Dispose();
+                Environment.Exit(1);
+            }
             string[] Ports = SerialPort.GetPortNames();
-            bool o = true;
-            foreach (string i in Ports)
+            bool o = false;
+            for(int i = 0; i < Ports.Length; i++) 
             {
                 try
                 {
                     RaccoltaPorte.Items.Add(i);
-                    Lucchetto = new PadLock(instate, passw, this.nome, i);
+                    Lucchetto = new PadLock(instate, passw, this.nome, Ports[i]);
                     if (!Lucchetto.IsCode)
                     {
                         File.WriteAllText("Reloading", "true");
                         Application.Restart();
                     }
                     InitializeTimer();
-                    RaccoltaPorte.SelectedItem = i;
+                    RaccoltaPorte.SelectedItem = Ports[i];
                     o = true;
                     break;
                 }

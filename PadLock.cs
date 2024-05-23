@@ -22,7 +22,7 @@ namespace LockSmart
             this.locked = initialstate;
             this.nome = nome;
             this.code = code;
-            this.motore = new SerialPort(port,9600);
+            this.motore = new SerialPort(port, 9600);
             this.motore.Open();
             try
             {
@@ -52,7 +52,7 @@ namespace LockSmart
         {
             get
             {
-                if(this.code == "")
+                if (this.code == "")
                 {
                     return false;
                 }
@@ -70,9 +70,9 @@ namespace LockSmart
 
         public string Locked
         {
-            get 
+            get
             {
-                if(this.locked == true)
+                if (this.locked == true)
                 {
                     return "Bloccato";
                 }
@@ -89,8 +89,8 @@ namespace LockSmart
 
         public void UnLock()
         {
-            try 
-            { 
+            try
+            {
                 this.motore.Write("2");
                 if (!this.locked)
                 {
@@ -122,7 +122,7 @@ namespace LockSmart
                                     }
                                     else
                                     {
-                                        all += this.locked + "\n";
+                                        all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
                                     }
                                 }
                                 File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
@@ -156,7 +156,7 @@ namespace LockSmart
                 {
                     this.motore.Write("4");
                 }
-                catch{ }
+                catch { }
             }
 
             else
@@ -175,12 +175,12 @@ namespace LockSmart
                         }
                         else
                         {
-                            all += this.locked + "\n";
+                            all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
                         }
                     }
                     File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[3], param[4]) + "\n");
                 }
-                catch{ MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
 
@@ -197,7 +197,7 @@ namespace LockSmart
                 else
                 {
                     string value = "";
-                    InputBox usera = new InputBox("Chiave",true);
+                    InputBox usera = new InputBox("Chiave", true);
                     usera.ShowDialog();
                     if (usera.DialogResult == DialogResult.OK)
                     {
@@ -219,7 +219,7 @@ namespace LockSmart
                                     }
                                     else
                                     {
-                                        all += this.locked + "\n";
+                                        all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
                                     }
                                 }
                                 File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
@@ -243,7 +243,7 @@ namespace LockSmart
 
         static public string NewPassword(string initialnome)
         {
-            PadLock FirstSetupPassword = new PadLock(true,initialnome);
+            PadLock FirstSetupPassword = new PadLock(true, initialnome);
             return FirstSetupPassword.AskPassword(true);
         }
 
@@ -270,7 +270,7 @@ namespace LockSmart
                         box = null;
                         if (code == h)
                         {
-                            InputBox lox = new InputBox("Nuova Chiave",true);
+                            InputBox lox = new InputBox("Nuova Chiave", true);
                             lox.ShowDialog();
                             if (lox.DialogResult == DialogResult.OK)
                             {
@@ -280,7 +280,7 @@ namespace LockSmart
                                 {
                                     this.code = newcode;
                                     string[] param = Criptografia.GeneraParametri();
-                                    string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1] + "\n" + Criptografia.Cripta(DateTime.Now + " Password Cambiata",param[0],param[1]) + "\n";
+                                    string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1] + "\n" + Criptografia.Cripta(DateTime.Now + " Password Cambiata", param[0], param[1]) + "\n";
                                     File.WriteAllText("Memory.PadLock", encoded);
                                 }
                                 catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -319,12 +319,12 @@ namespace LockSmart
                         string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
                         File.WriteAllText("Memory.PadLock", encoded);
                         File.WriteAllText("FirstSetup", "true");
-                        File.WriteAllText("Reloading","true");
+                        File.WriteAllText("Reloading", "true");
                         Application.Restart();
                         return newcode;
                     }
                     else
-                    { 
+                    {
 
                     }
                 }
@@ -351,11 +351,11 @@ namespace LockSmart
             {
                 string[] content = File.ReadAllLines("Memory.PadLock");
                 string text = "";
-                for(int i = 5; i<content.Length;  i++)
+                for (int i = 5; i < content.Length; i++)
                 {
                     text += Criptografia.DeCripta(content[i], content[3], content[4]) + "\n";
                 }
-                if(text != "")
+                if (text != "")
                 {
                     File.WriteAllText("Log-PadLock.txt", text);
                     MessageBox.Show("Log Generato", "Kiwi Lock", MessageBoxButtons.OK);
@@ -367,7 +367,7 @@ namespace LockSmart
             }
             catch
             {
-                MessageBox.Show("Impossibile generare il log", "Kiwi Lock", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Impossibile generare il log", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

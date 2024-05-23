@@ -43,14 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiwi Lock.exe" size="1425376">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InTheHand.Net.Bluetooth.dll" size="119808">
+      <assemblyIdentity name="InTheHand.Net.Bluetooth" version="4.1.0.0" publicKeyToken="EA38CAA273134499" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>2+LDhOsL3ceExGqCRIWf3nlQ3R7FqWQ+IChY6uLl0Ak=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiwi Lock.exe" size="1425888">
       <assemblyIdentity name="Kiwi Lock" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qb2nZ6YNpMtEzfYOkae5NuJZHo3GGNu8VTUSgsgIxwI=</dsig:DigestValue>
+        <dsig:DigestValue>8ojtSHpKVjiqFcWGiJRGYtsfIxpo2zZutbpCeyeMuFg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
