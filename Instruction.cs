@@ -26,7 +26,7 @@ namespace LockSmart
         public Instruction()
         {
             InitializeComponent();
-            this.label3.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font(QuickSand.Families[0], 20F, System.Drawing.FontStyle.Bold);
         }
 
         private void Instruction_Load(object sender, EventArgs e)

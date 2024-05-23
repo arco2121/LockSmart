@@ -39,11 +39,11 @@
             this.Info.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Info.FlatAppearance.BorderSize = 0;
             this.Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Info.Image = global::LockSmart.Properties.Resources.InfoIcon;
-            this.Info.Location = new System.Drawing.Point(180, 31);
+            this.Info.Image = global::LockSmart.Properties.Resources.USBIcon;
+            this.Info.Location = new System.Drawing.Point(167, 20);
             this.Info.Name = "Info";
             this.Info.Padding = new System.Windows.Forms.Padding(10);
-            this.Info.Size = new System.Drawing.Size(80, 80);
+            this.Info.Size = new System.Drawing.Size(200, 200);
             this.Info.TabIndex = 12;
             this.Info.UseVisualStyleBackColor = false;
             // 
@@ -52,7 +52,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(22)))), ((int)(((byte)(8)))));
-            this.label3.Location = new System.Drawing.Point(63, 149);
+            this.label3.Location = new System.Drawing.Point(78, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 16);
             this.label3.TabIndex = 13;
@@ -64,7 +64,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(462, 273);
+            this.ClientSize = new System.Drawing.Size(562, 373);
             this.ControlBox = false;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Info);
