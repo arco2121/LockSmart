@@ -100,7 +100,7 @@ namespace LockSmart
                     try
                     {
                         ((System.Windows.Forms.Timer)sender).Stop();
-                        PadLock Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i]);
+                        PadLock Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i],true);
                         if (!Lucchetto.IsCode)
                         {
                             File.WriteAllText("Reloading", "true");

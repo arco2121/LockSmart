@@ -17,38 +17,39 @@ namespace LockSmart
         public SerialPort motore;
         private string code;
         public string nome;
-        public PadLock(bool initialstate, string code, string nome, string port)
+        public PadLock(bool initialstate, string code, string nome, string port,bool Official)
         {
             this.locked = initialstate;
             this.nome = nome;
             this.code = code;
             this.motore = new SerialPort(port, 9600);
             this.motore.Open();
-            string exe = CheckOfficial();
-            if(exe != "OK")
+            if(Official)
             {
-                this.motore.Close();
-                throw new Exception("Non è un Kiwi PadLock");
-            }
-            else
-            {
-                try
+                string exe = CheckOfficial();
+                if (exe != "OK")
                 {
-                    if (this.locked)
-                    {
-                        this.motore.Write("0");
-                    }
-                    else if (!this.locked)
-                    {
-                        this.motore.Write("1");
-                    }
+                    this.motore.Close();
+                    throw new Exception("Non è un Kiwi PadLock");
                 }
-                catch
+            }
+            try
+            {
+                if (this.locked)
                 {
+                    this.motore.Write("0");
+                }
+                else if (!this.locked)
+                {
+                    this.motore.Write("1");
+                }
+            }
+            catch
+            {
 
-                }
-                this.motore.DataReceived += this.OutUnLock;
             }
+            this.motore.DataReceived += this.OutUnLock;
+
         }
 
         public PadLock(bool initialstate, string nome)
@@ -404,7 +405,7 @@ namespace LockSmart
 
         private string CheckOfficial()
         {
-            const int timeout = 1500;
+            const int timeout = 500;
             this.motore.Write("C");
             DateTime start = DateTime.Now;
 
@@ -414,7 +415,6 @@ namespace LockSmart
                 {
                     return "NO";
                 }
-
                 string rec = this.motore.ReadExisting();
                 if (rec == "H")
                 {

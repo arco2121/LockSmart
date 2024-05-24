@@ -50,7 +50,7 @@ namespace LockSmart
             {
                 RaccoltaPorte.Items.Add(Ports[i]);
             }
-            Lucchetto = new PadLock(this.instate, this.pass, this.nome, this.porta);
+            Lucchetto = new PadLock(this.instate, this.pass, this.nome, this.porta, false);
             RaccoltaPorte.SelectedItem = Lucchetto.motore.PortName;
             InitializeTimer();
             RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
@@ -81,7 +81,7 @@ namespace LockSmart
                 {
 
                 }
-                PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta);
+                PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta, true);
                 Lucchetto = NewLock;
             }
             catch
