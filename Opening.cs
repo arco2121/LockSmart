@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InTheHand.Net.Bluetooth;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +33,23 @@ namespace LockSmart
 
         private void Opening_Load(object sender, EventArgs e)
         {
-           try
+            RadioMode State;
+            BluetoothRadio radio;
+            try
+            {
+                radio = BluetoothRadio.Default;
+                State = radio.Mode;
+            }
+            catch
+            {
+                State = RadioMode.PowerOff;
+            }
+            if (!(State == RadioMode.PowerOff))
+            {
+                MessageBox.Show("Spegnere il Bluethooth per il corretto funzionamento", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(1);
+            }
+            try
             {
                 string h;
                 try

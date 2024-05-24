@@ -25,11 +25,17 @@ namespace LockSmart
         internal PadLock Lucchetto;
         private string nome;
         private Timer Texto;
+        private bool instate;
+        private string pass;
+        private string porta;
 
-        public Settings(PadLock Lock)
+        public Settings(bool instate,string pass,string nome,string porta)
         {
             InitializeComponent();
-            Lucchetto = Lock;
+            this.instate = instate;
+            this.pass = pass;
+            this.porta = porta;
+            this.nome = nome;
             this.RaccoltaPorte.Font = new System.Drawing.Font(QuickSand.Families[0], 13F, System.Drawing.FontStyle.Bold);
             this.label2.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
             this.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
@@ -37,14 +43,13 @@ namespace LockSmart
 
         private void LockApp_Load(object sender, EventArgs e)
         {
-            string[] prama = File.ReadAllLines("Memory.PadLock");
-            this.nome = Criptografia.DeCripta(prama[0], prama[3], prama[4]);
             this.Text = "Kiwi Lock - " + this.nome;
             string[] Ports = SerialPort.GetPortNames();
             for (int i = 0; i < Ports.Length; i++)
             {
                 RaccoltaPorte.Items.Add(Ports[i]);
             }
+            Lucchetto = new PadLock(this.instate, this.pass, this.nome, this.porta);
             RaccoltaPorte.SelectedItem = Lucchetto.motore.PortName;
             InitializeTimer();
             RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
@@ -79,7 +84,7 @@ namespace LockSmart
             { 
                 if(Lucchetto != null)
                 {
-                    Lucchetto.motore.Write("3");
+                    Lucchetto.motore.Write("2");
                 }
             }
             catch { }
@@ -121,6 +126,7 @@ namespace LockSmart
         {
             try
             {
+                Lucchetto.motore.Write("2");
                 InputBox Pass = new InputBox("Chiave",true);
                 Pass.ShowDialog();
                 if(Pass.DialogResult == DialogResult.OK)
@@ -140,6 +146,7 @@ namespace LockSmart
                 {
 
                 }
+                Lucchetto.motore.Write("4");
             }
             catch
             {

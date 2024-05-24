@@ -1,5 +1,4 @@
-﻿using InTheHand.Net.Bluetooth;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -80,23 +79,6 @@ namespace LockSmart
                 File.Delete("Memory.PadLock");
                 Environment.Exit(1);
             }
-            RadioMode State;
-            BluetoothRadio radio = null;
-            try
-            {
-                radio = BluetoothRadio.Default;
-                State = radio.Mode;
-            }
-            catch
-            {
-                State = RadioMode.PowerOff;
-            }
-            if (!(State == RadioMode.PowerOff))
-            {
-                MessageBox.Show("Spegnere il Bluethooth per il corretto funzionamento", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                radio.Dispose();
-                Environment.Exit(1);
-            }
         }
 
         private void Instruction_Shown(object sender, EventArgs e)
@@ -109,24 +91,25 @@ namespace LockSmart
 
         private void InitializeAll(object sender, EventArgs e)
         {
-            ((System.Windows.Forms.Timer)sender).Stop();
-            PadLock Lucchetto;
-            string[] Ports = SerialPort.GetPortNames();
             bool o = false;
             while (!o)
             {
+                string[] Ports = SerialPort.GetPortNames();
                 for (int i = 0; i < Ports.Length; i++)
                 {
                     try
                     {
-                        Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i]);
+                        ((System.Windows.Forms.Timer)sender).Stop();
+                        PadLock Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i]);
                         if (!Lucchetto.IsCode)
                         {
                             File.WriteAllText("Reloading", "true");
                             Application.Restart();
                         }
                         o = true;
-                        Settings Impostazioni = new Settings(Lucchetto);
+                        Lucchetto.motore.Close();
+                        Lucchetto = null;
+                        Settings Impostazioni = new Settings(this.instate, this.pass, this.nome, Ports[i]);
                         this.Hide();
                         Impostazioni.ShowDialog();
                         break;

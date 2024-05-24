@@ -280,19 +280,23 @@ namespace LockSmart
                                 {
                                     this.code = newcode;
                                     string all = "";
-                                    string[] param = Criptografia.GeneraParametri();
-                                    for (int i = 0; i < param.Length; i++)
+                                    string[] text = File.ReadAllLines("Memory.PadLock");
+                                    for (int i = 0; i < text.Length; i++)
                                     {
-                                        if (i != 1)
+                                        if(i==2)
                                         {
-                                            all += param[i] + "\n";
+                                            all += Criptografia.Cripta(newcode, text[3], text[4]) + "\n";
+                                        }
+                                        else if(i == 1)
+                                        {
+                                            all += Criptografia.Cripta(this.locked + "", text[3], text[4]) + "\n";
                                         }
                                         else
                                         {
-                                            all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
+                                            all += text[i] + "\n";
                                         }
                                     }
-                                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Password Cambiata", param[3], param[4]) + "\n");
+                                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Password Cambiata", text[3], text[4]));
                                 }
                                 catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                                 return newcode;
@@ -368,7 +372,9 @@ namespace LockSmart
                 }
                 if (text != "")
                 {
-                    File.WriteAllText("Log-PadLock.txt", text);
+                    string download = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+                    string filePath = Path.Combine(download, "Log-PadLock.txt");
+                    File.WriteAllText(filePath, text);
                     MessageBox.Show("Log Generato", "Kiwi Lock", MessageBoxButtons.OK);
                 }
                 else
