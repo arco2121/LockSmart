@@ -82,9 +82,32 @@ namespace LockSmart
 
         private void OK_Click(object sender, EventArgs e)
         {
-            this.InText = InBox.Text;
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if(InBox.Text != "")
+            {
+                if (forpassword)
+                {
+                    if (InBox.Text.Length >= 6)
+                    {
+                        this.InText = InBox.Text;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Inserisci almeno 6 caratteri", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    this.InText = InBox.Text;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Inserisci qualcosa", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void InitializeComponent()

@@ -322,26 +322,23 @@ namespace LockSmart
             }
             else
             {
-                while (true)
+                InputBox box = new InputBox("Prima Chiave", true);
+                box.ShowDialog();
+                if (box.DialogResult == DialogResult.OK)
                 {
-                    InputBox box = new InputBox("Prima Chiave", true);
-                    box.ShowDialog();
-                    if (box.DialogResult == DialogResult.OK)
-                    {
-                        string newcode = box.TextResult;
-                        box = null;
-                        string[] param = Criptografia.GeneraParametri();
-                        string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
-                        File.WriteAllText("Memory.PadLock", encoded);
-                        File.WriteAllText("FirstSetup", "true");
-                        File.WriteAllText("Reloading", "true");
-                        Application.Restart();
-                        return newcode;
-                    }
-                    else
-                    {
-
-                    }
+                    string newcode = box.TextResult;
+                    box = null;
+                    string[] param = Criptografia.GeneraParametri();
+                    string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
+                    File.WriteAllText("Memory.PadLock", encoded);
+                    File.WriteAllText("FirstSetup", "true");
+                    File.WriteAllText("Reloading", "true");
+                    Application.Restart();
+                    return newcode;
+                }
+                else
+                {
+                    return h;
                 }
             }
         }

@@ -28,6 +28,7 @@ namespace LockSmart
         private bool instate;
         private string pass;
         private string porta;
+        private string[] Selected;
 
         public Settings(bool instate,string pass,string nome,string porta)
         {
@@ -67,12 +68,20 @@ namespace LockSmart
 
         private void RaccoltaPorte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox Ogg = (ComboBox)sender;
-            string porta = Ogg.SelectedItem.ToString();
-            Lucchetto.motore.Write("2");
-            Lucchetto = null;
-            PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta);
-            Lucchetto = NewLock;
+            try
+            {
+                ComboBox Ogg = (ComboBox)sender;
+                string porta = Ogg.SelectedItem.ToString();
+                Lucchetto.motore.Write("2");
+                Lucchetto.motore.Close();
+                Lucchetto = null;
+                PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta);
+                Lucchetto = NewLock;
+            }
+            catch
+            {
+                MessageBox.Show("Impossibile eliminare il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -104,11 +113,17 @@ namespace LockSmart
         private void Texto_Tick(object sender, EventArgs e)
         {
             State.Text = Lucchetto.Locked;
-            RaccoltaPorte.Items.Clear();
             string[] Ports = SerialPort.GetPortNames();
-            for (int i = 0; i < Ports.Length; i++)
+            if (Selected != Ports)
             {
-                RaccoltaPorte.Items.Add(Ports[i]);
+                for (int i = 0; i < Ports.Length; i++)
+                {
+                    if (RaccoltaPorte.Items.IndexOf(Ports[i]) == -1)
+                    {
+                        RaccoltaPorte.Items.Add(Ports[i]);
+                    }
+                }
+                Selected = Ports;
             }
             Texto.Stop();
             Texto.Start();
