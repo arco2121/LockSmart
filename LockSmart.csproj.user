@@ -4,7 +4,7 @@
     <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <UpdateUrlHistory>http://localhost/Kiwi Lock/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>it-IT</FallbackCulture>

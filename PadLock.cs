@@ -404,19 +404,19 @@ namespace LockSmart
 
         private string CheckOfficial()
         {
-            const int timeout = 1000;
+            const int timeout = 1500;
             this.motore.Write("C");
             DateTime start = DateTime.Now;
+
             while (true)
             {
-                if ((DateTime.Now - start).TotalMilliseconds < timeout)
+                if ((DateTime.Now - start).TotalMilliseconds > timeout)
                 {
                     return "NO";
                 }
 
                 string rec = this.motore.ReadExisting();
-
-                if (rec == "C")
+                if (rec == "H")
                 {
                     return "OK";
                 }
