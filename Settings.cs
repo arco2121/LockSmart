@@ -104,6 +104,11 @@ namespace LockSmart
         private void Texto_Tick(object sender, EventArgs e)
         {
             State.Text = Lucchetto.Locked;
+            string[] Ports = SerialPort.GetPortNames();
+            for (int i = 0; i < Ports.Length; i++)
+            {
+                RaccoltaPorte.Items.Add(Ports[i]);
+            }
             Texto.Stop();
             Texto.Start();
         }
