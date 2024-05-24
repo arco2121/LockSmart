@@ -95,7 +95,7 @@ namespace LockSmart
             while (!o)
             {
                 string[] Ports = SerialPort.GetPortNames();
-                for (int i = 0; i < Ports.Length; i++)
+                for (int i = Ports.Length - 1; i >= 0; i--)
                 {
                     try
                     {
