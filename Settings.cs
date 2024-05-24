@@ -69,7 +69,10 @@ namespace LockSmart
         {
             ComboBox Ogg = (ComboBox)sender;
             string porta = Ogg.SelectedItem.ToString();
-            Lucchetto.motore.PortName = porta;
+            Lucchetto.motore.Write("2");
+            Lucchetto = null;
+            PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta);
+            Lucchetto = NewLock;
         }
 
 
