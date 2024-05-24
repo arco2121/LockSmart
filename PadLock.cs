@@ -24,22 +24,31 @@ namespace LockSmart
             this.code = code;
             this.motore = new SerialPort(port, 9600);
             this.motore.Open();
-            try
+            string exe = CheckOfficial();
+            if(exe != "OK")
             {
-                if (this.locked)
-                {
-                    this.motore.Write("0");
-                }
-                else if (!this.locked)
-                {
-                    this.motore.Write("1");
-                }
+                this.motore.Close();
+                throw new Exception("Non è un Kiwi PadLock");
             }
-            catch
+            else
             {
+                try
+                {
+                    if (this.locked)
+                    {
+                        this.motore.Write("0");
+                    }
+                    else if (!this.locked)
+                    {
+                        this.motore.Write("1");
+                    }
+                }
+                catch
+                {
 
+                }
+                this.motore.DataReceived += this.OutUnLock;
             }
-            this.motore.DataReceived += this.OutUnLock;
         }
 
         public PadLock(bool initialstate, string nome)
@@ -186,7 +195,15 @@ namespace LockSmart
 
         private void OutUnLock(object sender, SerialDataReceivedEventArgs e)
         {
-            string res = this.motore.ReadExisting();
+           string res = "";
+           try
+            {
+                res = this.motore.ReadExisting();
+            }
+            catch
+            {
+
+            }
             if (res == "s")
             {
                 if (!this.locked)
@@ -382,6 +399,27 @@ namespace LockSmart
             catch
             {
                 MessageBox.Show("Impossibile generare il log", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string CheckOfficial()
+        {
+            const int timeout = 1000;
+            this.motore.Write("C");
+            DateTime start = DateTime.Now;
+            while (true)
+            {
+                if ((DateTime.Now - start).TotalMilliseconds < timeout)
+                {
+                    return "NO";
+                }
+
+                string rec = this.motore.ReadExisting();
+
+                if (rec == "C")
+                {
+                    return "OK";
+                }
             }
         }
     }

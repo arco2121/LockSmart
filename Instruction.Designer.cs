@@ -52,11 +52,11 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(22)))), ((int)(((byte)(8)))));
-            this.label3.Location = new System.Drawing.Point(78, 242);
+            this.label3.Location = new System.Drawing.Point(63, 242);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 16);
+            this.label3.Size = new System.Drawing.Size(154, 16);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Collega il Kiwi PadLock";
+            this.label3.Text = "Collega un Kiwi PadLock";
             // 
             // Instruction
             // 

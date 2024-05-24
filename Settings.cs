@@ -72,15 +72,21 @@ namespace LockSmart
             {
                 ComboBox Ogg = (ComboBox)sender;
                 string porta = Ogg.SelectedItem.ToString();
-                Lucchetto.motore.Write("2");
-                Lucchetto.motore.Close();
-                Lucchetto = null;
+                try
+                {
+                    Lucchetto.motore.Write("2");
+                    Lucchetto.motore.Close();
+                }
+                catch
+                {
+
+                }
                 PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta);
                 Lucchetto = NewLock;
             }
             catch
             {
-                MessageBox.Show("Impossibile eliminare il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -114,13 +120,21 @@ namespace LockSmart
         {
             State.Text = Lucchetto.Locked;
             string[] Ports = SerialPort.GetPortNames();
-            if (Selected != Ports)
+            if (Selected != null && Selected.Length != Ports.Length)
             {
-                for (int i = 0; i < Ports.Length; i++)
+                foreach (string port in Ports)
                 {
-                    if (RaccoltaPorte.Items.IndexOf(Ports[i]) == -1)
+                    if (RaccoltaPorte.Items.IndexOf(port) == -1)
                     {
-                        RaccoltaPorte.Items.Add(Ports[i]);
+                        RaccoltaPorte.Items.Add(port);
+                    }
+                }
+
+                for (int i = RaccoltaPorte.Items.Count - 1; i >= 0; i--)
+                {
+                    if (Array.IndexOf(Ports, RaccoltaPorte.Items[i].ToString()) == -1)
+                    {
+                        RaccoltaPorte.Items.RemoveAt(i);
                     }
                 }
                 Selected = Ports;
