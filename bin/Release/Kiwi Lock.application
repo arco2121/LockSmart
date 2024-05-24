@@ -14,14 +14,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Kiwi Lock.exe.manifest" size="4712">
+    <dependentAssembly dependencyType="install" codebase="Kiwi Lock.exe.manifest" size="4013">
       <assemblyIdentity name="Kiwi Lock.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UYxOlGrCarEx1URg3Jyo8gPfQclqKSEhIqoOMRMJlrk=</dsig:DigestValue>
+        <dsig:DigestValue>6Vj6s/CONVegW2yZheqjIzV53CA+uJWCNaL0RRqtphI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
