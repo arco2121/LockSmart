@@ -114,7 +114,7 @@ namespace LockSmart
                         Impostazioni.ShowDialog();
                         break;
                     }
-                    catch(Exception ef)
+                    catch
                     {
                         o = false;
                     }
