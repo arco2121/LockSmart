@@ -29,34 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Instruction));
-            this.Info = new System.Windows.Forms.Button();
+            this.Info = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Info
             // 
             this.Info.BackColor = System.Drawing.Color.Transparent;
-            this.Info.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Info.FlatAppearance.BorderSize = 0;
+            this.Info.Cursor = System.Windows.Forms.Cursors.Default;
             this.Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Info.Image = global::LockSmart.Properties.Resources.USBIcon;
-            this.Info.Location = new System.Drawing.Point(167, 20);
+            this.Info.Location = new System.Drawing.Point(169, 40);
             this.Info.Name = "Info";
             this.Info.Padding = new System.Windows.Forms.Padding(10);
             this.Info.Size = new System.Drawing.Size(200, 200);
             this.Info.TabIndex = 12;
-            this.Info.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(22)))), ((int)(((byte)(8)))));
-            this.label3.Location = new System.Drawing.Point(63, 242);
+            this.label3.Location = new System.Drawing.Point(84, 269);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 16);
+            this.label3.Size = new System.Drawing.Size(146, 16);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Collega un Kiwi PadLock";
+            this.label3.Text = "Collega il Kiwi PadLock";
             // 
             // Instruction
             // 
@@ -65,7 +63,6 @@
             this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(562, 373);
-            this.ControlBox = false;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Info);
             this.DoubleBuffered = true;
@@ -85,7 +82,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Info;
+        private System.Windows.Forms.Label Info;
         private System.Windows.Forms.Label label3;
     }
 }

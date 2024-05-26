@@ -22,6 +22,7 @@ namespace LockSmart
         private bool instate;
         private string pass;
         private string nome;
+        private string codechar;
         public Instruction()
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace LockSmart
                 }
                 bool instate = Convert.ToBoolean(Criptografia.DeCripta(prama[1], prama[3], prama[4]));
                 this.nome = Criptografia.DeCripta(prama[0], prama[3], prama[4]);
+                this.codechar = Criptografia.DeCripta(prama[5], prama[3], prama[4]);
                 if (firstsetupif != "true")
                 {
                     InputBox Pass = new InputBox("Chiave", true);
@@ -81,15 +83,12 @@ namespace LockSmart
             }
         }
 
-        private void Instruction_Shown(object sender, EventArgs e)
+        private async void Instruction_Shown(object sender, EventArgs e)
         {
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 100;
-            timer.Tick += new EventHandler(InitializeAll);
-            timer.Start();
+            await InitializeAll();
         }
 
-        private void InitializeAll(object sender, EventArgs e)
+        private async Task InitializeAll() 
         {
             bool o = false;
             while (!o)
@@ -99,8 +98,7 @@ namespace LockSmart
                 {
                     try
                     {
-                        ((System.Windows.Forms.Timer)sender).Stop();
-                        PadLock Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i],true);
+                        PadLock Lucchetto = new PadLock(this.instate, this.pass,this.codechar, this.nome, Ports[i],true);
                         if (!Lucchetto.IsCode)
                         {
                             File.WriteAllText("Reloading", "true");
@@ -109,7 +107,8 @@ namespace LockSmart
                         o = true;
                         Lucchetto.motore.Close();
                         Lucchetto = null;
-                        Settings Impostazioni = new Settings(this.instate, this.pass, this.nome, Ports[i]);
+                        File.Delete("NewLock");
+                        Settings Impostazioni = new Settings(this.instate, this.pass, this.codechar, this.nome, Ports[i]);
                         this.Hide();
                         Impostazioni.ShowDialog();
                         break;
@@ -119,6 +118,7 @@ namespace LockSmart
                         o = false;
                     }
                 }
+                await Task.Delay(50);
             }
         }
     }
