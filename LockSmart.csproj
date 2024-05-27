@@ -176,6 +176,7 @@
     <None Include="NewLock.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TinyIcon.png" />
     <None Include="USBIcon.ico" />
     <None Include="IconTiny.png" />
     <None Include="LogoTiny.png" />

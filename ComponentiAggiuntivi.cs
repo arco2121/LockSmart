@@ -21,6 +21,7 @@ namespace LockSmart
         private TextBox InBox;
         private bool forpassword;
         private Button OK;
+        private Label label2;
         private string InText;
         
         public InputBox(string title,bool forpassword)
@@ -32,14 +33,13 @@ namespace LockSmart
             this.Text = "Kiwi Lock - " + title;
             this.Controls.Add(InBox);
             this.Controls.Add(OK);
-            InBox.Size = new Size(180, 30);
-            InBox.Font = this.Font = new System.Drawing.Font("Microsoft YaHei UI", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            InBox.Size = new Size(200, 30);
             if(this.forpassword)
             {
                 InBox.PasswordChar = '•';
             }
-            InBox.Location = new Point((this.ClientSize.Width - InBox.Width) / 2, (this.ClientSize.Height - InBox.Height) / 2);
-            OK.Location = new Point((this.ClientSize.Width - OK.Width) / 2, InBox.Bottom + 50);
+            InBox.Location = new Point((this.ClientSize.Width - InBox.Width) / 2, ((this.ClientSize.Height - InBox.Height) / 2) + 20);
+            OK.Location = new Point((this.ClientSize.Width - OK.Width) / 2, InBox.Bottom + 40);
             OK.Text = "Invio";
             InBox.KeyDown += InBox_KeyDown;
             OK.BackColor = Color.FromArgb(186, 178, 57);
@@ -113,13 +113,27 @@ namespace LockSmart
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputBox));
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(116)))), ((int)(((byte)(18)))));
+            this.label2.Image = global::LockSmart.Properties.Resources.TinyIcon;
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point((this.ClientSize.Width - label2.Width) / 2 - 2, 10);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(5);
+            this.label2.Size = new System.Drawing.Size(100, 100);
+            this.label2.TabIndex = 4;
             // 
             // InputBox
             // 
             this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Controls.Add(this.label2);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
