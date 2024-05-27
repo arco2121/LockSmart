@@ -87,30 +87,5 @@ namespace LockSmart
 
             return new string[] { chiave, iv };
         }
-
-        static public string GeneraCodice()
-        {
-            //Alfabetato dei comandi Arduino = "BbYVHCs01245";
-            string codice;
-            string alfabeto = "!\"#$%&'()*+,-./36789:;<=>?@ADEFGIJKLMNOPQRTUVWXZ[\\]^_`adefghijklmnopqrtuwxyz{|}~";
-            string[] parametri = GeneraParametri();
-            string chiave = parametri[0];
-            string iv = parametri[1];
-            int numeroCasuale = caso.Next();
-            string testoDaCifrare = numeroCasuale.ToString();
-            string crittogramma = Cripta(testoDaCifrare, chiave, iv);
-            byte[] crittogrammaBytes = Encoding.UTF8.GetBytes(crittogramma);
-
-            int indice = 0;
-            foreach (byte b in crittogrammaBytes)
-            {
-                indice = (indice + b) % alfabeto.Length;
-            }
-            indice = (indice ^ numeroCasuale) % alfabeto.Length;
-            indice = ((indice << 3) | (indice >> (32 - 3))) % alfabeto.Length;
-            codice = alfabeto[indice].ToString();
-
-            return codice;
-        }
     }
 }

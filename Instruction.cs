@@ -22,7 +22,6 @@ namespace LockSmart
         private bool instate;
         private string pass;
         private string nome;
-        private string codechar;
         public Instruction()
         {
             InitializeComponent();
@@ -45,7 +44,6 @@ namespace LockSmart
                 }
                 bool instate = Convert.ToBoolean(Criptografia.DeCripta(prama[1], prama[3], prama[4]));
                 this.nome = Criptografia.DeCripta(prama[0], prama[3], prama[4]);
-                this.codechar = Criptografia.DeCripta(prama[5], prama[3], prama[4]);
                 if (firstsetupif != "true")
                 {
                     InputBox Pass = new InputBox("Chiave", true);
@@ -88,7 +86,7 @@ namespace LockSmart
             await InitializeAll();
         }
 
-        private async Task InitializeAll() 
+        private async Task InitializeAll()
         {
             bool o = false;
             while (!o)
@@ -98,7 +96,7 @@ namespace LockSmart
                 {
                     try
                     {
-                        PadLock Lucchetto = new PadLock(this.instate, this.pass,this.codechar, this.nome, Ports[i],true);
+                        PadLock Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i],true);
                         if (!Lucchetto.IsCode)
                         {
                             File.WriteAllText("Reloading", "true");
@@ -107,8 +105,7 @@ namespace LockSmart
                         o = true;
                         Lucchetto.motore.Close();
                         Lucchetto = null;
-                        File.Delete("NewLock");
-                        Settings Impostazioni = new Settings(this.instate, this.pass, this.codechar, this.nome, Ports[i]);
+                        Settings Impostazioni = new Settings(this.instate, this.pass, this.nome, Ports[i]);
                         this.Hide();
                         Impostazioni.ShowDialog();
                         break;
@@ -118,7 +115,7 @@ namespace LockSmart
                         o = false;
                     }
                 }
-                await Task.Delay(50);
+                await Task.Delay(10);
             }
         }
     }

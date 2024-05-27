@@ -29,16 +29,14 @@ namespace LockSmart
         private string pass;
         private string porta;
         private string[] Selected;
-        private string codechar;
 
-        public Settings(bool instate,string pass, string codechar,string nome,string porta)
+        public Settings(bool instate,string pass,string nome,string porta)
         {
             InitializeComponent();
             this.instate = instate;
             this.pass = pass;
             this.porta = porta;
             this.nome = nome;
-            this.codechar = codechar;
             this.RaccoltaPorte.Font = new System.Drawing.Font(QuickSand.Families[0], 13F, System.Drawing.FontStyle.Bold);
             this.label2.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
             this.Font = new System.Drawing.Font(QuickSand.Families[0], 16F, System.Drawing.FontStyle.Bold);
@@ -52,7 +50,7 @@ namespace LockSmart
             {
                 RaccoltaPorte.Items.Add(Ports[i]);
             }
-            Lucchetto = new PadLock(this.instate, this.pass, this.codechar, this.nome, this.porta, false);
+            Lucchetto = new PadLock(this.instate, this.pass, this.nome, this.porta, false);
             RaccoltaPorte.SelectedItem = Lucchetto.motore.PortName;
             InitializeTimer();
             RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
@@ -83,12 +81,12 @@ namespace LockSmart
                 {
 
                 }
-                PadLock NewLock = new PadLock(this.instate, this.pass, this.codechar, this.nome, porta, true);
+                PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta, true);
                 Lucchetto = NewLock;
             }
             catch
             {
-                MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -173,7 +171,6 @@ namespace LockSmart
                 {
                     if(Pass.TextResult == Lucchetto.Code)
                     {
-                        Lucchetto.motore.Write("5");
                         File.Delete("Memory.PadLock");
                         File.WriteAllText("Reloading", "true");
                         Application.Restart();
@@ -191,7 +188,7 @@ namespace LockSmart
             }
             catch
             {
-                MessageBox.Show("Impossibile eliminare il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Impossibile eliminare il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

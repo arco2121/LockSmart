@@ -17,20 +17,17 @@ namespace LockSmart
         public SerialPort motore;
         private string code;
         public string nome;
-        private string codechar;
-
-        public PadLock(bool initialstate, string code,string codechar, string nome, string port,bool Official)
+        public PadLock(bool initialstate, string code, string nome, string port,bool Official)
         {
             this.locked = initialstate;
             this.nome = nome;
             this.code = code;
-            this.codechar = codechar;
             this.motore = new SerialPort(port, 9600);
             this.motore.Open();
             if(Official)
             {
-                bool exe = CheckOfficialAndThis();
-                if (!exe)
+                string exe = CheckOfficial();
+                if (exe != "OK")
                 {
                     this.motore.Close();
                     throw new Exception("Non è un Kiwi PadLock");
@@ -107,7 +104,7 @@ namespace LockSmart
                 this.motore.Write("2");
                 if (!this.locked)
                 {
-                    MessageBox.Show("Il lucchetto è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("il Kiwi PadLock è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.motore.Write("4");
                 }
                 else
@@ -146,7 +143,7 @@ namespace LockSmart
                                 this.motore.Write("4");
                             }
                         }
-                        catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                     else
                     {
@@ -156,7 +153,7 @@ namespace LockSmart
             }
             catch
             {
-                MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -164,7 +161,7 @@ namespace LockSmart
         {
             if (this.locked)
             {
-                MessageBox.Show("Il lucchetto è gia bloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("il Kiwi PadLock è gia bloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 try
                 {
                     this.motore.Write("4");
@@ -193,7 +190,7 @@ namespace LockSmart
                     }
                     File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[3], param[4]) + "\n");
                 }
-                catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
 
@@ -212,7 +209,7 @@ namespace LockSmart
             {
                 if (!this.locked)
                 {
-                    MessageBox.Show("Il lucchetto è gia sbloccato");
+                    MessageBox.Show("il Kiwi PadLock è gia sbloccato");
                     this.motore.Write("4");
                 }
                 else
@@ -251,12 +248,12 @@ namespace LockSmart
                                 this.motore.Write("4");
                             }
                         }
-                        catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                     else
                     {
                         try { this.motore.Write("4"); }
-                        catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     }
                 }
             }
@@ -319,7 +316,7 @@ namespace LockSmart
                                     }
                                     File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Password Cambiata", text[3], text[4]));
                                 }
-                                catch { MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                                catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                                 return newcode;
                             }
                             else
@@ -349,12 +346,10 @@ namespace LockSmart
                 {
                     string newcode = box.TextResult;
                     box = null;
-                    string codecharato = Criptografia.GeneraCodice();
                     string[] param = Criptografia.GeneraParametri();
-                    string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1] + "\n" + Criptografia.Cripta(codecharato, param[0], param[1]);
+                    string encoded = Criptografia.Cripta(this.nome, param[0], param[1]) + "\n" + Criptografia.Cripta("" + this.locked, param[0], param[1]) + "\n" + Criptografia.Cripta(newcode, param[0], param[1]) + "\n" + param[0] + "\n" + param[1];
                     File.WriteAllText("Memory.PadLock", encoded);
                     File.WriteAllText("FirstSetup", "true");
-                    File.WriteAllText("NewLock", "true");
                     File.WriteAllText("Reloading", "true");
                     Application.Restart();
                     return newcode;
@@ -376,7 +371,7 @@ namespace LockSmart
             }
             catch
             {
-                MessageBox.Show("Impossibile comunicare con il lucchetto", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -386,7 +381,7 @@ namespace LockSmart
             {
                 string[] content = File.ReadAllLines("Memory.PadLock");
                 string text = "";
-                for (int i = 6; i < content.Length; i++)
+                for (int i = 5; i < content.Length; i++)
                 {
                     text += Criptografia.DeCripta(content[i], content[3], content[4]) + "\n";
                 }
@@ -408,104 +403,23 @@ namespace LockSmart
             }
         }
 
-        private bool CheckOfficialAndThis()
+        private string CheckOfficial()
         {
             const int timeout = 500;
             this.motore.Write("C");
             DateTime start = DateTime.Now;
-
             while (true)
             {
                 if ((DateTime.Now - start).TotalMilliseconds > timeout)
                 {
-                    return false;
+                    return "NO";
                 }
                 string rec = this.motore.ReadExisting();
                 if (rec == "H")
                 {
-                    string CHE = "";
-                    try
-                    {
-                       CHE = File.ReadAllText("NewLock");
-                    }
-                    catch
-                    {
-                        CHE = "";
-                    }
-                    if (CHE == "")
-                    {
-                        bool Key = CheckKey();
-                        if(Key)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        bool Arturo = SendAndCheck();
-                        if(Arturo)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
+                    return "OK";
                 }
             }
-        }
-
-        private bool CheckKey()
-        {
-            const int timeout = 500;
-            this.motore.Write("V");
-            DateTime start = DateTime.Now;
-            while (true)
-            {
-                if ((DateTime.Now - start).TotalMilliseconds > timeout)
-                {
-                    return false;
-                }
-                string rec = this.motore.ReadExisting();
-                if (rec == this.codechar)
-                {
-                    return true;
-                }
-            }
-        }
-
-        private bool SendAndCheck()
-        {
-            const int timeout = 500;
-            this.motore.Write("B");
-            DateTime start = DateTime.Now;
-            string l = this.motore.ReadExisting();
-            if (l == "b")
-            {
-                this.motore.Write(this.codechar);
-                while (true)
-                {
-                    if ((DateTime.Now - start).TotalMilliseconds > timeout)
-                    {
-                        return false;
-                    }
-                    string rec = this.motore.ReadExisting();
-                    if (rec == "Y")
-                    {
-                        return true;
-                    }
-                }
-            }
-            else
-            {
-                return false;
-            }
-
         }
     }
 }

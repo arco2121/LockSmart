@@ -39,7 +39,7 @@
             this.Info.Cursor = System.Windows.Forms.Cursors.Default;
             this.Info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Info.Image = global::LockSmart.Properties.Resources.USBIcon;
-            this.Info.Location = new System.Drawing.Point(169, 40);
+            this.Info.Location = new System.Drawing.Point(169, 36);
             this.Info.Name = "Info";
             this.Info.Padding = new System.Windows.Forms.Padding(10);
             this.Info.Size = new System.Drawing.Size(200, 200);
@@ -50,11 +50,11 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(22)))), ((int)(((byte)(8)))));
-            this.label3.Location = new System.Drawing.Point(84, 269);
+            this.label3.Location = new System.Drawing.Point(68, 271);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 16);
+            this.label3.Size = new System.Drawing.Size(154, 16);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Collega il Kiwi PadLock";
+            this.label3.Text = "Collega un Kiwi PadLock";
             // 
             // Instruction
             // 

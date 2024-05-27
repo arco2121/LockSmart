@@ -41,7 +41,7 @@ namespace LockSmart
             InBox.Location = new Point((this.ClientSize.Width - InBox.Width) / 2, (this.ClientSize.Height - InBox.Height) / 2);
             OK.Location = new Point((this.ClientSize.Width - OK.Width) / 2, InBox.Bottom + 50);
             OK.Text = "Invio";
-            this.MaximizeBox = false;
+            InBox.KeyDown += InBox_KeyDown;
             OK.BackColor = Color.FromArgb(186, 178, 57);
             this.BackColor = Color.FromArgb(255, 246, 232);
             OK.ForeColor = Color.FromArgb(32, 22, 8);
@@ -119,13 +119,24 @@ namespace LockSmart
             // 
             this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ClientSize = new System.Drawing.Size(282, 253);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "InputBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
 
+        }
+
+        private void InBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                OK.PerformClick();
+            }
         }
     }
 }
