@@ -46,7 +46,7 @@ namespace LockSmart
             }
             if (!(State == RadioMode.PowerOff))
             {
-                MessageBox.Show("Spegnere il Bluethooth per il corretto funzionamento", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Spegnere il Bluethooth per il corretto funzionamento dell'applicazione ", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(1);
             }
             try
