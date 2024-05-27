@@ -24,7 +24,6 @@ namespace LockSmart
 
         internal PadLock Lucchetto;
         private string nome;
-        private Timer Texto;
         private bool instate;
         private string pass;
         private string porta;
@@ -52,7 +51,6 @@ namespace LockSmart
             }
             Lucchetto = new PadLock(this.instate, this.pass, this.nome, this.porta, false);
             RaccoltaPorte.SelectedItem = Lucchetto.motore.PortName;
-            InitializeTimer();
             RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
         }
 
@@ -108,39 +106,33 @@ namespace LockSmart
             catch { }
         }
 
-        private void InitializeTimer()
+        private async Task UpdateAll()
         {
-            Texto = new Timer();
-            Texto.Interval = 100;
-            Texto.Tick += Texto_Tick;
-            Texto.Start();
-        }
-
-        private void Texto_Tick(object sender, EventArgs e)
-        {
-            State.Text = Lucchetto.Locked;
-            string[] Ports = SerialPort.GetPortNames();
-            if (Selected != null && Selected.Length != Ports.Length)
+            while(true)
             {
-                foreach (string port in Ports)
+                State.Text = Lucchetto.Locked;
+                string[] Ports = SerialPort.GetPortNames();
+                if (Selected != null && Selected.Length != Ports.Length)
                 {
-                    if (RaccoltaPorte.Items.IndexOf(port) == -1)
+                    foreach (string port in Ports)
                     {
-                        RaccoltaPorte.Items.Add(port);
+                        if (RaccoltaPorte.Items.IndexOf(port) == -1)
+                        {
+                            RaccoltaPorte.Items.Add(port);
+                        }
                     }
-                }
 
-                for (int i = RaccoltaPorte.Items.Count - 1; i >= 0; i--)
-                {
-                    if (Array.IndexOf(Ports, RaccoltaPorte.Items[i].ToString()) == -1)
+                    for (int i = RaccoltaPorte.Items.Count - 1; i >= 0; i--)
                     {
-                        RaccoltaPorte.Items.RemoveAt(i);
+                        if (Array.IndexOf(Ports, RaccoltaPorte.Items[i].ToString()) == -1)
+                        {
+                            RaccoltaPorte.Items.RemoveAt(i);
+                        }
                     }
+                    Selected = Ports;
                 }
-                Selected = Ports;
+                await Task.Delay(10);
             }
-            Texto.Stop();
-            Texto.Start();
         }
 
         private void Log_Click(object sender, EventArgs e)
@@ -196,6 +188,11 @@ namespace LockSmart
         {
             Informazioni Info = new Informazioni();
             Info.ShowDialog();
+        }
+
+        private async void Settings_Shown(object sender, EventArgs e)
+        {
+            await UpdateAll();
         }
     }
 }

@@ -43,7 +43,7 @@
             this.Lock.FlatAppearance.BorderSize = 0;
             this.Lock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Lock.Image = global::LockSmart.Properties.Resources.NewLock;
-            this.Lock.Location = new System.Drawing.Point(348, 308);
+            this.Lock.Location = new System.Drawing.Point(350, 311);
             this.Lock.Name = "Lock";
             this.Lock.Size = new System.Drawing.Size(160, 160);
             this.Lock.TabIndex = 2;
@@ -55,7 +55,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(116)))), ((int)(((byte)(18)))));
             this.label1.Image = global::LockSmart.Properties.Resources.Logo;
-            this.label1.Location = new System.Drawing.Point(98, 13);
+            this.label1.Location = new System.Drawing.Point(100, 13);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(5);
             this.label1.Size = new System.Drawing.Size(660, 290);
@@ -88,7 +88,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(232)))));
-            this.BackgroundImage = global::LockSmart.Properties.Resources.KiwiBackground;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(862, 493);
             this.Controls.Add(this.Info);

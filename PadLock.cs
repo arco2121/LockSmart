@@ -52,7 +52,7 @@ namespace LockSmart
 
         }
 
-        public PadLock(bool initialstate, string nome)
+        private PadLock(bool initialstate, string nome)
         {
             this.nome = nome;
             this.locked = initialstate;
@@ -104,7 +104,7 @@ namespace LockSmart
                 this.motore.Write("2");
                 if (!this.locked)
                 {
-                    MessageBox.Show("il Kiwi PadLock è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Il Kiwi PadLock è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.motore.Write("4");
                 }
                 else
@@ -135,7 +135,7 @@ namespace LockSmart
                                         all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
                                     }
                                 }
-                                File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
+                                File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Kiwi PadLock Sbloccato", param[3], param[4]) + "\n");
                             }
                             else
                             {
@@ -161,7 +161,7 @@ namespace LockSmart
         {
             if (this.locked)
             {
-                MessageBox.Show("il Kiwi PadLock è gia bloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Il Kiwi PadLock è gia bloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 try
                 {
                     this.motore.Write("4");
@@ -188,7 +188,7 @@ namespace LockSmart
                             all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
                         }
                     }
-                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Bloccato", param[3], param[4]) + "\n");
+                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Kiwi PadLock Bloccato", param[3], param[4]) + "\n");
                 }
                 catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
@@ -209,7 +209,7 @@ namespace LockSmart
             {
                 if (!this.locked)
                 {
-                    MessageBox.Show("il Kiwi PadLock è gia sbloccato");
+                    MessageBox.Show("Il Kiwi PadLock è gia sbloccato","Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.motore.Write("4");
                 }
                 else
@@ -240,7 +240,7 @@ namespace LockSmart
                                         all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
                                     }
                                 }
-                                File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Lucchetto Sbloccato", param[3], param[4]) + "\n");
+                                File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Kiwi PadLock Sbloccato", param[3], param[4]) + "\n");
                             }
                             else
                             {
@@ -399,7 +399,7 @@ namespace LockSmart
             }
             catch
             {
-                MessageBox.Show("Impossibile generare il log", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Impossibile generare il Log", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -108,7 +108,7 @@ namespace LockSmart
                         Settings Impostazioni = new Settings(this.instate, this.pass, this.nome, Ports[i]);
                         this.Hide();
                         Impostazioni.ShowDialog();
-                        break;
+                        return;
                     }
                     catch
                     {

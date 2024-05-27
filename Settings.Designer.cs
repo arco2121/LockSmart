@@ -211,6 +211,7 @@ namespace LockSmart
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LockApp_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Settings_FormClosed);
             this.Load += new System.EventHandler(this.LockApp_Load);
+            this.Shown += new System.EventHandler(this.Settings_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
