@@ -146,7 +146,7 @@ namespace LockSmart
 
         }
 
-        private void Chiusura(EventArgs e, EventHandler es)
+        private void Chiusura(object e, FormClosingEventArgs es)
         {
             ComponentiAggiuntivi.FinestraAperta = false;
         }
