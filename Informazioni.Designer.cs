@@ -113,6 +113,7 @@
             this.Name = "Informazioni";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kiwi Lock - Informazioni";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Informazioni_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

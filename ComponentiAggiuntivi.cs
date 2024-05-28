@@ -55,6 +55,7 @@ namespace LockSmart
             this.Font = new System.Drawing.Font(QuickSand.Families[0], 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             OK.Click += OK_Click;
             InBox.Click += InBox_Click;
+            ComponentiAggiuntivi.FinestraAperta = true;
         }
 
         private void InBox_Click(object sender, EventArgs e)
@@ -140,8 +141,14 @@ namespace LockSmart
             this.MinimizeBox = false;
             this.Name = "InputBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += Chiusura;
             this.ResumeLayout(false);
 
+        }
+
+        private void Chiusura(EventArgs e, EventHandler es)
+        {
+            ComponentiAggiuntivi.FinestraAperta = false;
         }
 
         private void InBox_KeyDown(object sender, KeyEventArgs e)
@@ -152,5 +159,10 @@ namespace LockSmart
                 OK.PerformClick();
             }
         }
+    }
+
+    static class ComponentiAggiuntivi
+    {
+        static public bool FinestraAperta = false;
     }
 }
