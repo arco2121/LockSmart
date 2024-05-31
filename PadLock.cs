@@ -99,60 +99,63 @@ namespace LockSmart
 
         public void UnLock()
         {
-            try
+            if(!ComponentiAggiuntivi.FinestraAperta)
             {
-                this.motore.Write("2");
-                if (!this.locked)
+                try
                 {
-                    MessageBox.Show("Il Kiwi PadLock è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    this.motore.Write("4");
-                }
-                else
-                {
-                    string value = "";
-                    InputBox user = new InputBox("Chiave", true);
-                    user.ShowDialog();
-                    if (user.DialogResult == DialogResult.OK)
+                    this.motore.Write("2");
+                    if (!this.locked)
                     {
-                        value = user.TextResult;
-                        try
-                        {
-                            if (value == this.code)
-                            {
-                                this.motore.Write("1");
-                                this.locked = false;
-                                string all = "";
-                                string[] param = File.ReadAllLines("Memory.PadLock");
-                                for (int i = 0; i < param.Length; i++)
-                                {
-                                    if (i != 1)
-                                    {
-                                        all += param[i] + "\n";
-                                    }
-                                    else
-                                    {
-                                        all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
-                                    }
-                                }
-                                File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Kiwi PadLock Sbloccato", param[3], param[4]) + "\n");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.motore.Write("4");
-                            }
-                        }
-                        catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        MessageBox.Show("Il Kiwi PadLock è gia sbloccato", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.motore.Write("4");
                     }
                     else
                     {
-                        this.motore.Write("4");
+                        string value = "";
+                        InputBox user = new InputBox("Chiave", true);
+                        user.ShowDialog();
+                        if (user.DialogResult == DialogResult.OK)
+                        {
+                            value = user.TextResult;
+                            try
+                            {
+                                if (value == this.code)
+                                {
+                                    this.motore.Write("1");
+                                    this.locked = false;
+                                    string all = "";
+                                    string[] param = File.ReadAllLines("Memory.PadLock");
+                                    for (int i = 0; i < param.Length; i++)
+                                    {
+                                        if (i != 1)
+                                        {
+                                            all += param[i] + "\n";
+                                        }
+                                        else
+                                        {
+                                            all += Criptografia.Cripta(this.locked + "", param[3], param[4]) + "\n";
+                                        }
+                                    }
+                                    File.WriteAllText("Memory.PadLock", all + Criptografia.Cripta(DateTime.Now + " Kiwi PadLock Sbloccato", param[3], param[4]) + "\n");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Chiave Errata", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    this.motore.Write("4");
+                                }
+                            }
+                            catch { MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        }
+                        else
+                        {
+                            this.motore.Write("4");
+                        }
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch
+                {
+                    MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -167,7 +170,6 @@ namespace LockSmart
                 }
                 catch { }
             }
-
             else
             {
                 try
@@ -366,15 +368,18 @@ namespace LockSmart
 
         public void ChangeCode()
         {
-            try
+           if(!ComponentiAggiuntivi.FinestraAperta)
             {
-                this.motore.Write("2");
-                this.code = AskPassword(false);
-                this.motore.Write("4");
-            }
-            catch
-            {
-                MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    this.motore.Write("2");
+                    this.code = AskPassword(false);
+                    this.motore.Write("4");
+                }
+                catch
+                {
+                    MessageBox.Show("Impossibile comunicare con il Kiwi PadLock", "Kiwi Lock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
