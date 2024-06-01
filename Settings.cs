@@ -50,8 +50,9 @@ namespace LockSmart
                 RaccoltaPorte.Items.Add(Ports[i]);
             }
             Lucchetto = new PadLock(this.instate, this.pass, this.nome, this.porta, false);
+            Lucchetto.AcivateCheck();
             RaccoltaPorte.SelectedItem = Lucchetto.motore.PortName;
-            RaccoltaPorte.SelectedIndexChanged += new System.EventHandler(this.RaccoltaPorte_SelectedIndexChanged);
+            RaccoltaPorte.SelectedIndexChanged += RaccoltaPorte_SelectedIndexChanged;
         }
 
         private void Lock_Click(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace LockSmart
             Lucchetto.UnLock();
         }
 
-        private void RaccoltaPorte_SelectedIndexChanged(object sender, EventArgs e)
+        private  void RaccoltaPorte_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -73,6 +74,7 @@ namespace LockSmart
                 try
                 {
                     Lucchetto.motore.Write("2");
+                    Lucchetto.Eliminando = true;
                     Lucchetto.motore.Close();
                 }
                 catch
@@ -80,6 +82,7 @@ namespace LockSmart
 
                 }
                 PadLock NewLock = new PadLock(this.instate, this.pass, this.nome, porta, true);
+                NewLock.AcivateCheck();
                 Lucchetto = NewLock;
             }
             catch
@@ -111,25 +114,32 @@ namespace LockSmart
             while(true)
             {
                 State.Text = Lucchetto.Locked;
-                string[] Ports = SerialPort.GetPortNames();
-                if (Selected != null && Selected.Length != Ports.Length)
+               try
                 {
-                    foreach (string port in Ports)
+                    string[] Ports = SerialPort.GetPortNames();
+                    if (Selected != null && Selected.Length != Ports.Length)
                     {
-                        if (RaccoltaPorte.Items.IndexOf(port) == -1)
+                        foreach (string port in Ports)
                         {
-                            RaccoltaPorte.Items.Add(port);
+                            if (RaccoltaPorte.Items.IndexOf(port) == -1)
+                            {
+                                RaccoltaPorte.Items.Add(port);
+                            }
                         }
-                    }
 
-                    for (int i = RaccoltaPorte.Items.Count - 1; i >= 0; i--)
-                    {
-                        if (Array.IndexOf(Ports, RaccoltaPorte.Items[i].ToString()) == -1)
+                        for (int i = RaccoltaPorte.Items.Count - 1; i >= 0; i--)
                         {
-                            RaccoltaPorte.Items.RemoveAt(i);
+                            if (Array.IndexOf(Ports, RaccoltaPorte.Items[i].ToString()) == -1)
+                            {
+                                RaccoltaPorte.Items.RemoveAt(i);
+                            }
                         }
+                        Selected = Ports;
                     }
-                    Selected = Ports;
+                }
+                catch
+                {
+
                 }
                 await Task.Delay(10);
             }
@@ -146,6 +156,7 @@ namespace LockSmart
             {
                 if (Lucchetto != null)
                 {
+                    Lucchetto.Eliminando = true;
                     Lucchetto.motore.Close();
                 }
             }

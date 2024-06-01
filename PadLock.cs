@@ -17,11 +17,14 @@ namespace LockSmart
         public SerialPort motore;
         private string code;
         public string nome;
+        public bool Eliminando;
+
         public PadLock(bool initialstate, string code, string nome, string port,bool Official)
         {
             this.locked = initialstate;
             this.nome = nome;
             this.code = code;
+            this.Eliminando = false;
             this.motore = new SerialPort(port, 9600);
             this.motore.Open();
             if(Official)
@@ -427,6 +430,21 @@ namespace LockSmart
                 {
                     return "OK";
                 }
+            }
+        }
+
+        public async Task AcivateCheck()
+        {
+            while(true)
+            {
+                if(!this.Eliminando && !this.motore.IsOpen)
+                {
+                    File.WriteAllText("FirstSetup", "true");
+                    File.WriteAllText("Reloading", "true");
+                    Application.Restart();
+                    return;
+                }
+                await Task.Delay(10);
             }
         }
     }
