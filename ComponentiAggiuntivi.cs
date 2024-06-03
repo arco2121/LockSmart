@@ -24,6 +24,9 @@ namespace LockSmart
         private Label label2;
         private string InText;
         
+        /*Finestra utilizzata per richiedere informazioni e password con integrati sistemi di controllo interni tipo un minimo di 6 caratteri per le
+         password e un minimo di uno per le informzaioni generali.*/
+
         public InputBox(string title,bool forpassword)
         {
             InitializeComponent();

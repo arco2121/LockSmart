@@ -22,6 +22,7 @@ namespace LockSmart
         private bool instate;
         private string pass;
         private string nome;
+
         public Instruction()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace LockSmart
 
         private void Instruction_Load(object sender, EventArgs e)
         {
+            /*Eseguito quando si richiama il modulo. Innanzitutto controlla se se deve fare gia l'autenticazione o è appena stato fatto
+             il riavvio in seguito all processo di creazione. Una volta superato questo passaggio, Viene eseguita il set di istruzione previsto per l'avvio della finestra (Shown*/
             try
             {
                 string[] prama = File.ReadAllLines("Memory.PadLock");
@@ -88,6 +91,9 @@ namespace LockSmart
 
         private async Task InitializeAll()
         {
+            /*Da qui iniza un ciclo continuo che controlla che sia stato collegato un Kiwi PadLock (andando a creare un oggetto PadLock con le dobute caratteristiche), e 
+             * se risulta effettivamente collegato(cioè non entra nel catch), la seguente schermata verrà chiusa e si aprira la schermata effettiva di gestione del PadLock, interrompendo anche il ciclo.
+            Il controllo è applicato alle porte individuate dal SerialPort.GetPortnames().*/
             bool o = false;
             while (!o)
             {
@@ -96,7 +102,7 @@ namespace LockSmart
                 {
                     try
                     {
-                        PadLock Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i],true);
+                        PadLock Lucchetto = new PadLock(this.instate, this.pass, this.nome, Ports[i],true,false);
                         if (!Lucchetto.IsCode)
                         {
                             File.WriteAllText("Reloading", "true");

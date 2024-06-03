@@ -19,8 +19,12 @@ namespace LockSmart
         public string nome;
         public bool Eliminando;
 
-        public PadLock(bool initialstate, string code, string nome, string port,bool Official)
+        public PadLock(bool initialstate, string code, string nome, string port,bool Official,bool SendFirstSignal)
         {
+            /*Si inizializza il PadLock e se Official è su true si controlla anche se si tratta vwramente di un Kiwi PadLock, utilizato
+             * più che altro per la fase di connessione e di riconnessione nel caso di selezione di un'alta porta seriale o si disconnette 
+             * il PadLock. Quansdo si va a inizializzare un PadLock per la prima volta si verra a creare un File di memoria che serve al programa per identificare 
+             e registrare il PadLock associato a quel file di memoria. Tuute le informazioni salvate nel file sono salvate in maniera da essere criptate*/
             this.locked = initialstate;
             this.nome = nome;
             this.code = code;
@@ -36,20 +40,23 @@ namespace LockSmart
                     throw new Exception("Non è un Kiwi PadLock");
                 }
             }
-            try
+            if(SendFirstSignal)
             {
-                if (this.locked)
+                try
                 {
-                    this.motore.Write("0");
+                    if (this.locked)
+                    {
+                        this.motore.Write("0");
+                    }
+                    else if (!this.locked)
+                    {
+                        this.motore.Write("1");
+                    }
                 }
-                else if (!this.locked)
+                catch
                 {
-                    this.motore.Write("1");
-                }
-            }
-            catch
-            {
 
+                }
             }
             this.motore.DataReceived += this.OutUnLock;
 
@@ -100,6 +107,10 @@ namespace LockSmart
             get => this.locked;
         }
 
+
+        /*Nel caso in cui FinestraAperta (globale) sia su true allora le richieste della porta seriale vengono ignorate, per evitare interruzioni nelle
+         azioni dell'utente. Lo stsso vale nel caso in cui il'Utente cerchi di buggare il programma aprendo piu finestre contemporaneamente e quindi inviando piu richieste
+        al PadLock*/
         public void UnLock()
         {
             if(!ComponentiAggiuntivi.FinestraAperta)
@@ -416,6 +427,7 @@ namespace LockSmart
 
         private string CheckOfficial()
         {
+            /*Il programma tramite 'C' richiede al PadLock di reinviare indietro 'H' per determinare se è connesso un effettivo PadLock*/
             const int timeout = 500;
             this.motore.Write("C");
             DateTime start = DateTime.Now;
@@ -435,6 +447,8 @@ namespace LockSmart
 
         public async Task AcivateCheck()
         {
+            /*Questo serve per determinare continuamente se il PadLock è ancora connesso, in caso contriario il programma si riavvia in maniera
+             tale da tornare nella schermata di connessione del PadLock*/
             while(true)
             {
                 if(!this.Eliminando && !this.motore.IsOpen)

@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections;
+using System.Drawing;
 
 namespace LockSmart
 {
     static class Criptografia
     {
+        /*Queste funzioni cifrano e decifrano stringhe usando AES(un algoritmo di cifratura) con chiave e vettore.
+        GeneraParametri crea chiave e vettore casuali*/
         static private Random caso = new Random();
         static public string Cripta(string testoDaCifrare, string chiave, string vettore)
         {

@@ -28,11 +28,17 @@ namespace LockSmart
             {
                 string h = Nome.TextResult;
                 string pass = PadLock.NewPassword(h);
+                //Viene creato il PadLock e l'app è riavviata
             }
         }
 
         private void Opening_Load(object sender, EventArgs e)
         {
+            /*Eseguito quando la app di avvia, innanzitutto controlla se il bluethooth è attivo.
+             * Poi controlla se nel file di Memoria del PadLock è presente la password, se non è presente allora avviera la procedura di creazione
+             del PadLock, se invece è presente allora il PadLock sarà gia creato e si passera alla schermata di richiesta di autenticazione e di 
+             connessione con il PadLock*/
+
             RadioMode State;
             BluetoothRadio radio;
             try
@@ -82,6 +88,7 @@ namespace LockSmart
 
         private void Info_Click(object sender, EventArgs e)
         {
+            //Apre solo la schermata di Info dell'applicazione
             Informazioni Info = new Informazioni();
             Info.ShowDialog();
         }

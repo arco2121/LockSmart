@@ -10,6 +10,10 @@ namespace LockSmart
 {
     internal static class Program
     {
+        /*Si definisce un oggetto Mutex (threading) che ha lo scopo di controllare se 
+         è aperta piu di una istanza dell'applicazione. In tal caso viene lanciato un messaggio di avviso invece di aprire l'app.
+        La presenza del File Reloading viene controllata per impedire che si verifichi un comportamento anomalo quando si richiama Application.Restart.
+        Infatti il File viene creato ogni volta che richiamo la funzione Restart.*/
         static private Mutex cosino = null;
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
