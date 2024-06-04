@@ -69,7 +69,7 @@ namespace LockSmart
 
         private  void RaccoltaPorte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*Funzione per cambiare la porta seriale del PadLock attuale*/
+            /*Funzione per cambiare la porta seriale del PadLock attuale
             if(!ComponentiAggiuntivi.FinestraAperta)
             {
                 try
@@ -101,7 +101,7 @@ namespace LockSmart
             else
             {
                 RaccoltaPorte.SelectedIndex = RaccoltaPorte.SelectedIndex;
-            }
+            }*/
         }
 
 
