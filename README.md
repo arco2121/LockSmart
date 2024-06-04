@@ -1,8 +1,9 @@
 # Kiwi Lock
-<img src="image4.png" alt="Ecovi" width="400" style="display:flex;justify-content:center;align-items:center;">
+
+<img src="image4.png" alt="Ecovi" width="600" style="display:flex;justify-content:center;align-items:center;">
 </div>
 
-**Kiwi Lock** è il software prorietario di gestione del Kiwi PadLock. È stato creato per un progetto di gruppo.
+**Kiwi Lock** è il software prorietario che gestisce il Kiwi PadLock. È stato creato per un progetto di gruppo.
 
 ## User Experience
 All’apertura iniziale, l’utente deve scegliere il nome del lucchetto e inserire la password.
