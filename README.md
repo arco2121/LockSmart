@@ -1,6 +1,7 @@
 # Kiwi Lock
-<img src="Icon.ico" alt="Ecovi" width="400" style="display:flex;justify-content:center;align-items:center;">
+<img src="image4.png" alt="Ecovi" width="400" style="display:flex;justify-content:center;align-items:center;">
 </div>
+
 **Kiwi Lock** è il software prorietario di gestione del Kiwi PadLock. È stato creato per un progetto di gruppo.
 
 ## User Experience
