@@ -12,11 +12,11 @@ Gli altri servono rispettivamente per generare il log delle azioni, per modifica
 É importante notare che il lucchetto deve essere connesso al computer per eseguire operazioni sul programma. Molto importante è anche disattivare il Bluetooth prima di avviare il programma!
 
 ## Codici per la comunicazione
-“s” -> (Ricevuto dal programma) Il Kiwi PadLock richiede l’inserimento della password
-“C” -> (Ricevuto dal programma) Il Kiwi PadLock conferma al programma che tutto sia funzionante
-“H” -> Richiesta della conferma che il dispositivo collegato sia il Kiwi PadLock
-“0” -> Chiusura del Kiwi PadLock
-“1” -> Apertura del Kiwi PadLock
-“2” -> Invia il Kiwi PadLock in stato di attesa e disattiva il sensore
-“4” -> Esce dallo stato di attesa e attivazione del sensore
-“5” -> (Scartato) Entra nello stato per la ricezione di una stringa
+
+-  “s” -> (Ricevuto dal programma) Il Kiwi PadLock richiede l’inserimento della password
+-  “C” -> (Ricevuto dal programma) Il Kiwi PadLock conferma al programma che tutto sia funzionante
+-  “H” -> Richiesta della conferma che il dispositivo collegato sia il Kiwi PadLock
+-  “0” -> Chiusura del Kiwi PadLock
+-  “1” -> Apertura del Kiwi PadLock
+-  “2” -> Invia il Kiwi PadLock in stato di attesa e disattiva il sensore
+-  “4” -> Esce dallo stato di attesa e attivazione del sensore
